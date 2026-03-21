@@ -225,32 +225,38 @@
     box-shadow: 0 0 10px var(--accent-color);
 }
 
+/* Media Queries */
 @media (max-width: 768px) {
-    /* 1. Libera o scroll no nível do navegador */
-    html, body {
+    .split-container, 
+    .contact-content { 
+        flex-direction: column; 
+    }
+
+    .grid-container { 
+        grid-template-columns: 1fr; 
+    }
+    
+    .capa-container h1 { 
+        font-size: 1.2em !important; 
+    }
+    
+    .contact-info-card { 
+        min-width: auto; 
+        width: 100%; 
+    }
+}
+
+@media (max-width: 768px) {
+    /* Força a visibilidade do viewport */
+    html, body, .reveal, .reveal-viewport {
         overflow-y: auto !important;
         overflow-x: hidden !important;
         height: auto !important;
-        position: relative !important;
-    }
-
-    /* 2. Mata a "caixa" do Reveal que trava a tela */
-    .reveal-viewport {
-        overflow-y: auto !important;
-        height: auto !important;
         min-height: 100vh !important;
-        position: relative !important;
-        display: block !important;
+        touch-action: pan-y pinch-zoom;          /* ← ADIÇÃO: permite rolagem vertical com 1 dedo */
     }
 
-    .reveal {
-        overflow: visible !important;
-        height: auto !important;
-        display: block !important;
-        position: relative !important;
-    }
-
-    /* 3. Empilha os slides um abaixo do outro como uma página comum */
+    /* Reseta o container de slides para se comportar como uma div comum */
     .reveal .slides {
         display: block !important;
         position: relative !important;
@@ -258,49 +264,46 @@
         height: auto !important;
         inset: 0 !important;
         transform: none !important;
+        zoom: 1 !important; /* Remove o zoom automático do Reveal */
+        text-align: left !important;
         margin: 0 !important;
-        padding: 0 !important;
-        perspective: none !important;
-        perspective-origin: 50% 50% !important;
+        touch-action: pan-y;                     /* ← ADIÇÃO: scroll vertical prioritário */
+        -webkit-overflow-scrolling: touch;       /* ← ADIÇÃO: rolagem suave no iOS */
     }
 
-    /* 4. Faz cada seção (slide) se comportar como uma div de conteúdo */
+    /* Força cada seção a aparecer uma abaixo da outra */
     .reveal .slides section {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        justify-content: center !important;
-        
+        display: block !important;
         position: relative !important;
         top: 0 !important;
-        left: 0 !important;
         visibility: visible !important;
         opacity: 1 !important;
-        
-        width: 100% !important;
         height: auto !important;
-        min-height: 80vh !important; /* Cada slide ocupa quase a tela toda antes do próximo */
-        
+        min-height: 400px; /* Garante que não fiquem colados */
         padding: 60px 20px !important;
-        margin-bottom: 20px !important;
-        transform: none !important;
         box-sizing: border-box !important;
+        pointer-events: auto !important;
+        transform: none !important;
+        margin-bottom: 20px;                     /* ← ADIÇÃO: mais espaço entre slides no mobile */
     }
 
-    /* 5. Ajustes de alinhamento visual */
-    .split-container, .contact-content {
-        flex-direction: column !important;
-        gap: 30px !important;
+    /* Ajuste de fontes para não sumirem */
+    .capa-container h1 { 
+        font-size: 1.2em !important; 
+        white-space: normal !important; 
     }
-
-    .img-profile {
-        max-height: 350px !important;
-        width: auto !important;
-        margin-bottom: 20px !important;
+    .reveal h2 { 
+        font-size: 1em !important; 
     }
-
-    /* Remove as setas que podem "roubar" o clique e travar o scroll */
-    .reveal .controls, .reveal .progress {
+    
+    /* Esconde as setas que travam a tela no mobile */
+    .reveal .controls, 
+    .reveal .progress {
         display: none !important;
+    }
+
+    /* Evita que elementos interativos interfiram na rolagem */
+    .reveal section * {
+        touch-action: manipulation;              /* ← ADIÇÃO: melhora resposta em botões/links sem bloquear scroll */
     }
 }

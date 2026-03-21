@@ -3,27 +3,42 @@ const isMobile = () => window.innerWidth <= 768;
 
 // Inicialização do Reveal
 Reveal.initialize({
-    // ... suas configs
-    hash: true,
+    // Configurações para Desktop
+    width: 1200,
+    height: 800,
+    margin: 0.1,
+    minScale: 0.2,
+    maxScale: 2.0,
     
-    // AJUSTE ESTA LINHA:
-    touch: isMobile() ? false : true, 
+    // Configurações de Comportamento
+    hash: true,
+    center: !isMobile(),           // Não centralizar no mobile (evita bugs de posicionamento)
+    disableLayout: isMobile(),     // Muito importante: desativa o layout fixo do Reveal no mobile
+    embedded: isMobile(),          // Faz o Reveal se comportar como conteúdo normal da página
+    
+    // → Aqui está o ajuste principal para scroll com 1 dedo:
+    touch: !isMobile(),            // Desativa COMPLETAMENTE o touch/swipe do Reveal no mobile
     
     controls: !isMobile(),
     progress: !isMobile(),
-    embedded: isMobile(),
-    disableLayout: isMobile()
+    
+    // Outras opções que você já tinha ou pode querer
+    // transition: 'slide',        // ou o que você estiver usando
+    // ... suas outras configs
 });
 
-// Correção para o "erro da tela escura" ao redimensionar
+// Correção dinâmica ao redimensionar a janela
 window.addEventListener('resize', () => {
-    // Se mudarmos de PC para Mobile ou vice-versa via console, recarregamos
     const currentMobile = isMobile();
-    if (currentMobile) {
-        // No mobile, forçamos o Reveal a "soltar" os slides
-        Reveal.configure({ disableLayout: true, center: false });
-    } else {
-        Reveal.configure({ disableLayout: false, center: true });
-    }
+    
+    Reveal.configure({ 
+        disableLayout: currentMobile, 
+        center: !currentMobile,
+        touch: !currentMobile,          // ← Garante que touch fique false no mobile
+        controls: !currentMobile,
+        progress: !currentMobile,
+        embedded: currentMobile
+    });
+    
     Reveal.layout();
 });
