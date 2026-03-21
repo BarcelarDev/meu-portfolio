@@ -237,11 +237,58 @@
     }
     
     .capa-container h1 { 
-        font-size: 2.2em !important; 
+        font-size: 1.2em !important; 
     }
     
     .contact-info-card { 
         min-width: auto; 
         width: 100%; 
+    }
+}
+
+@media (max-width: 768px) {
+    /* Força a visibilidade do viewport */
+    html, body, .reveal, .reveal-viewport {
+        overflow-y: auto !important;
+        overflow-x: hidden !important;
+        height: auto !important;
+        min-height: 100vh !important;
+    }
+
+    /* Reseta o container de slides para se comportar como uma div comum */
+    .reveal .slides {
+        display: block !important;
+        position: relative !important;
+        width: 100% !important;
+        height: auto !important;
+        inset: 0 !important;
+        transform: none !important;
+        zoom: 1 !important; /* Remove o zoom automático do Reveal */
+        text-align: left !important;
+        margin: 0 !important;
+    }
+
+    /* Força cada seção a aparecer uma abaixo da outra */
+    .reveal .slides section {
+        display: block !important;
+        position: relative !important;
+        top: 0 !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        height: auto !important;
+        min-height: 400px; /* Garante que não fiquem colados */
+        padding: 60px 20px !important;
+        box-sizing: border-box !important;
+        pointer-events: auto !important;
+        transform: none !important;
+    }
+
+    /* Ajuste de fontes para não sumirem */
+    .capa-container h1 { font-size: 1.2em !important; white-space: normal !important; }
+    .reveal h2 { font-size: 1em !important; }
+    
+    /* Esconde as setas que travam a tela no mobile */
+    .reveal .controls, .reveal .progress {
+        display: none !important;
     }
 }
