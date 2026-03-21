@@ -307,3 +307,6 @@
         touch-action: manipulation;              /* ← ADIÇÃO: melhora resposta em botões/links sem bloquear scroll */
     }
 }
+.reveal {
+    background-attachment: fixed; /* Mantém o gradiente parado enquanto o conteúdo rola por cima */
+}
