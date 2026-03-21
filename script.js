@@ -3,21 +3,16 @@ const isMobile = () => window.innerWidth <= 768;
 
 // Inicialização do Reveal
 Reveal.initialize({
-    // Configurações para Desktop
+    // ... suas outras configs
     width: 1200,
     height: 800,
-    margin: 0.1,
-    minScale: 0.2,
-    maxScale: 2.0,
     
-    // Configurações de Comportamento
+    // ADICIONE ESTA LINHA:
+    embedded: isMobile(), 
+    
     hash: true,
-    center: !isMobile(), // Não centralizar no mobile para não bugar a rolagem
-    disableLayout: isMobile(), // Desativa o sistema de coordenadas do Reveal no mobile
-    
-    // Controles
-    controls: !isMobile(),
-    progress: !isMobile(),
+    center: !isMobile(),
+    disableLayout: isMobile(),
     touch: true
 });
 

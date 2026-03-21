@@ -225,29 +225,9 @@
     box-shadow: 0 0 10px var(--accent-color);
 }
 
-/* Media Queries */
+/* --- BLOCO DE CORREÇÃO MOBILE UNIFICADO --- */
 @media (max-width: 768px) {
-    .split-container, 
-    .contact-content { 
-        flex-direction: column; 
-    }
-    
-    .grid-container { 
-        grid-template-columns: 1fr; 
-    }
-    
-    .capa-container h1 { 
-        font-size: 1.2em !important; 
-    }
-    
-    .contact-info-card { 
-        min-width: auto; 
-        width: 100%; 
-    }
-}
-
-@media (max-width: 768px) {
-    /* Força a visibilidade do viewport */
+    /* 1. Força a liberação do Scroll */
     html, body, .reveal, .reveal-viewport {
         overflow-y: auto !important;
         overflow-x: hidden !important;
@@ -255,7 +235,7 @@
         min-height: 100vh !important;
     }
 
-    /* Reseta o container de slides para se comportar como uma div comum */
+    /* 2. Reset do container de Slides */
     .reveal .slides {
         display: block !important;
         position: relative !important;
@@ -263,32 +243,73 @@
         height: auto !important;
         inset: 0 !important;
         transform: none !important;
-        zoom: 1 !important; /* Remove o zoom automático do Reveal */
-        text-align: left !important;
+        zoom: 1 !important;
+        text-align: center !important;
         margin: 0 !important;
     }
 
-    /* Força cada seção a aparecer uma abaixo da outra */
+    /* 3. Transforma cada Slide em uma seção comum */
     .reveal .slides section {
-        display: block !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
         position: relative !important;
-        top: 0 !important;
         visibility: visible !important;
         opacity: 1 !important;
         height: auto !important;
-        min-height: 400px; /* Garante que não fiquem colados */
-        padding: 60px 20px !important;
+        min-height: 100vh !important; /* Cada slide ocupa pelo menos a tela cheia */
+        padding: 40px 20px !important;
         box-sizing: border-box !important;
-        pointer-events: auto !important;
         transform: none !important;
+        top: 0 !important;
     }
 
-    /* Ajuste de fontes para não sumirem */
-    .capa-container h1 { font-size: 1.2em !important; white-space: normal !important; }
-    .reveal h2 { font-size: 1em !important; }
+    /* 4. Ajustes de Layout (Split e Grid) */
+    .split-container, 
+    .contact-content {
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 30px !important;
+        width: 100% !important;
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+
+    /* 5. Ajuste da Imagem de Perfil */
+    .profile-side, .info-side, .text-side {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .img-profile {
+        max-height: 40vh !important; /* Garante que a foto não expulse o texto da tela */
+        width: auto !important;
+        margin: 0 auto 20px !important;
+        border-radius: 12px !important;
+    }
+
+    /* 6. Tipografia e Elementos */
+    .capa-container h1 { 
+        font-size: 1.8em !important; 
+        white-space: normal !important; 
+    }
     
-    /* Esconde as setas que travam a tela no mobile */
-    .reveal .controls, .reveal .progress {
+    .reveal h2 { 
+        font-size: 1.5em !important; 
+        margin-bottom: 20px !important; 
+    }
+
+    .tags-container {
+        justify-content: center !important;
+    }
+
+    /* Esconde controles que flutuam e atrapalham o scroll */
+    .reveal .controls, 
+    .reveal .progress {
         display: none !important;
     }
 }
