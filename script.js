@@ -3,15 +3,16 @@ const isMobile = () => window.innerWidth <= 768;
 
 // Inicialização do Reveal
 Reveal.initialize({
-    // ... suas outras configurações
+    // ... suas configs
     hash: true,
-    touch: true, // Garante que o toque funcione
+    
+    // AJUSTE ESTA LINHA:
+    touch: isMobile() ? false : true, 
+    
     controls: !isMobile(),
     progress: !isMobile(),
-    
-    // ESTAS DUAS LINHAS SÃO VITAIS:
-    embedded: isMobile(), 
-    disableLayout: isMobile() 
+    embedded: isMobile(),
+    disableLayout: isMobile()
 });
 
 // Correção para o "erro da tela escura" ao redimensionar
