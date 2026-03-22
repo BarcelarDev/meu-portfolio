@@ -68,7 +68,7 @@
     max-width: 600px;
 }
 
-/* --- ATUALIZADO: BIO TEXT --- */
+/* --- BIO TEXT --- */
 .bio-text {
     font-size: 0.5em !important; 
     line-height: 1.6 !important;
@@ -105,7 +105,7 @@
                 0 0 45px var(--accent-glow);
 }
 
-/* --- ATUALIZADO: TAGS META E PILL --- */
+/* --- TAGS META E PILL --- */
 .tags-meta {
     font-size: 0.8em !important; 
     margin: 15px 0 !important;
@@ -197,7 +197,7 @@
     box-shadow: -10px 10px 30px rgba(227, 27, 35, 0.1);
 }
 
-/* --- Grid de Formação --- */
+/* --- Grid de Formação (ATUALIZADO COM EFEITOS) --- */
 .formation-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -214,6 +214,33 @@
     border-radius: 12px;
     text-align: left;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.formation-card:hover {
+    transform: translateY(-10px); 
+    background: rgba(227, 27, 35, 0.05);
+    border-color: rgba(227, 27, 35, 0.5);
+    box-shadow: 0 10px 30px rgba(227, 27, 35, 0.15);
+}
+
+.formation-card h4 {
+    margin: 0 0 10px 0 !important;
+    font-size: 0.9em !important;
+    color: var(--accent-color) !important;
+}
+
+.formation-card .instituicao {
+    display: block;
+    font-weight: 700;
+    font-size: 0.7em;
+    color: #fff;
+}
+
+.formation-card .detalhes {
+    display: block;
+    font-size: 0.55em;
+    color: var(--text-dim);
+    margin-top: 5px;
 }
 
 /* --- Seção de Contato --- */
