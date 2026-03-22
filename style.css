@@ -138,7 +138,7 @@
 }
 
 /* ==========================================================================
-   5. SEÇÕES DE CONTEÚDO (CAPA, TIMELINE, FORMAÇÃO)
+   5. SEÇÕES DE CONTEÚDO (CAPA, TIMELINE, FORMAÇÃO) - UPGRADED
    ========================================================================== */
 /* --- Capa / Landing --- */
 .capa-container {
@@ -173,7 +173,7 @@
     margin-bottom: 25px;
 }
 
-/* --- Linha do Tempo Vertical --- */
+/* --- Linha do Tempo Vertical (Refinada) --- */
 .timeline-box {
     border-left: 2px solid rgba(255, 255, 255, 0.05);
     padding-left: 45px;
@@ -190,9 +190,11 @@
     height: 100%;
     width: 2px;
     background: linear-gradient(to bottom, 
-                var(--accent-color) 0%, 
-                rgba(227, 27, 35, 0.4) 50%, 
+                transparent 0%, 
+                var(--accent-color) 15%, 
+                var(--accent-color) 85%, 
                 transparent 100%);
+    box-shadow: 0 0 8px var(--accent-glow);
 }
 
 .timeline-entry {
@@ -232,30 +234,41 @@
 .timeline-subtitle { color: var(--accent-color); } 
 .timeline-subtitle-off { color: var(--text-dim); }
 
+/* Ponto da Timeline com Efeito de Respiro */
 .timeline-entry::before {
     content: '';
     position: absolute;
-    left: -54px; 
+    left: -55px; 
     top: 50%;
     transform: translateY(-50%);
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background: var(--bg-dark);
     border: 2px solid var(--accent-color);
     border-radius: 50%;
-    z-index: 2;
-    transition: all 0.3s ease;
+    z-index: 5;
+    transition: all 0.4s ease;
+    box-shadow: 0 0 0 4px var(--bg-dark); 
 }
 
 .timeline-entry:hover::before {
     background: var(--accent-color);
-    box-shadow: 0 0 15px var(--accent-glow);
-    transform: translateY(-50%) scale(1.3);
+    box-shadow: 0 0 0 4px var(--bg-dark), 
+                0 0 15px var(--accent-color);
+    transform: translateY(-50%) scale(1.2);
 }
 
-.timeline-entry.active {
-    border-left-color: var(--accent-color);
-    background: rgba(227, 27, 35, 0.04);
+.timeline-entry.active::before {
+    background: var(--accent-color);
+    box-shadow: 0 0 0 4px var(--bg-dark), 
+                0 0 20px var(--accent-color);
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(160, 0, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(160, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(160, 0, 0, 0); }
 }
 
 /* --- Grid Acadêmica / Formação --- */
