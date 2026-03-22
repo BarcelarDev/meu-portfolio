@@ -5,11 +5,11 @@
     --r-main-font: 'Open Sans', sans-serif;
     --r-heading-font: 'Poppins', sans-serif;
     --accent-color: #e31b23;
-    --accent-glow: rgba(227, 27, 35, 0.4);
-    --bg-dark: #050505;
-    --glass-bg: rgba(255, 255, 255, 0.03);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --text-main: #ffffff;
+    --accent-glow: rgba(227, 27, 35, 0.6);
+    --bg-dark: #080808;
+    --glass-bg: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --text-main: #f8fafc;
     --text-dim: #94a3b8;
 }
 
@@ -21,7 +21,8 @@
 
 body {
     background: var(--bg-dark);
-    background-image: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
+    /* Gradiente ajustado para o topo para melhor foco visual */
+    background-image: radial-gradient(circle at top center, #1a0505 0%, #050505 80%);
     background-attachment: fixed;
     font-family: var(--r-main-font);
     color: var(--text-main);
@@ -112,6 +113,13 @@ h2::after {
     transition: all 0.4s ease;
 }
 
+/* Ajuste de legibilidade para parágrafos dentro de cards */
+.glass-card p {
+    color: #e2e8f0;
+    font-size: 1.05rem;
+    letter-spacing: 0.3px;
+}
+
 .glass-card:hover {
     border-color: var(--accent-color);
     background: rgba(227, 27, 35, 0.05);
@@ -192,9 +200,9 @@ ul li::before {
    ========================================================================== */
 .contact-content {
     display: grid;
-    grid-template-columns: 2fr 1fr; /* Card de info 2x maior que o QR */
+    grid-template-columns: 2fr 1fr;
     gap: 30px;
-    align-items: stretch; /* Força a mesma altura matemática */
+    align-items: stretch;
 }
 
 .contact-info, .qr-section {
@@ -282,7 +290,7 @@ ul li::before {
     }
 
     .contact-content {
-        grid-template-columns: 1fr; /* Empilha em telas menores */
+        grid-template-columns: 1fr;
     }
 
     .contact-info, .qr-section {
