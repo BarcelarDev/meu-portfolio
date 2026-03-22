@@ -1,18 +1,28 @@
 /* ==========================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS (RED & BLACK EDITION)
+   1. VARIÁVEIS E CONFIGURAÇÕES DE CORES (DESIGN SYSTEM)
    ========================================================================== */
 :root {
+    /* Tipografia */
     --r-main-font: 'Open Sans', sans-serif;
     --r-heading-font: 'Poppins', sans-serif;
-    --accent-color: #a00000; /* Vermelho Vibrante */
-    --accent-glow: rgba(227, 27, 35, 0.4);
-    --bg-dark: #050505;
+    
+    /* Identidade Visual: Red & Black */
+    --accent-color: #a00000;         /* Vermelho Vibrante */
+    --accent-glow: rgba(227, 27, 35, 0.4); /* Brilho para efeitos neon */
+    --bg-dark: #050505;              /* Fundo escuro profundo */
+    
+    /* Efeito de Vidro (Glassmorphism) */
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Cores de Texto */
     --text-main: #ffffff;
-    --text-dim: #94a3b8;
+    --text-dim: #94a3b8;             /* Texto secundário/suave */
 }
 
+/* ==========================================================================
+   2. ESTILOS GERAIS DO REVEAL.JS (BODY & TEXTO)
+   ========================================================================== */
 .reveal {
     background: var(--bg-dark);
     background-image: radial-gradient(circle at center, #1a0505 0%, #050505 100%);
@@ -21,17 +31,18 @@
     color: var(--text-main);
 }
 
+/* --- Destaques de Cor --- */
 .accent { 
     color: var(--accent-color) !important; 
     text-shadow: 0 0 15px var(--accent-glow);
 }
 
-/* Setas e Progresso */
+/* --- Navegação: Setas e Progresso --- */
 .reveal .controls { color: var(--accent-color) !important; }
 .reveal .progress { height: 4px; background: rgba(255,255,255,0.1) !important; }
 .reveal .progress span { background: var(--accent-color) !important; }
 
-/* Tipografia Geral */
+/* --- Tipografia Global --- */
 .reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
     color: var(--text-main);
 }
@@ -45,7 +56,7 @@
 }
 
 /* ==========================================================================
-   2. COMPONENTES DE LAYOUT (CARDS E CONTAINERS)
+   3. COMPONENTES DE LAYOUT (GRIDS E CONTAINERS)
    ========================================================================== */
 .grid-container {
     display: grid;
@@ -68,7 +79,10 @@
     max-width: 600px;
 }
 
-/* --- BIO TEXT --- */
+/* ==========================================================================
+   4. ELEMENTOS DE PERFIL (BIO E IMAGEM)
+   ========================================================================== */
+/* --- Texto Biográfico --- */
 .bio-text {
     font-size: 0.5em !important; 
     line-height: 1.6 !important;
@@ -79,20 +93,19 @@
 
 .bio-text strong, 
 .bio-text .accent-text {
-    font-size: 1.1em;             
+    font-size: 1.1em;              
     letter-spacing: 1px;
     color: #fff;
 }
 
+/* --- Moldura da Foto de Perfil --- */
 .img-profile {
     border-radius: 12px;
     box-shadow: 0 20px 40px rgba(0,0,0,0.8), 
                 0 0 30px var(--accent-glow); 
-    
     max-height: 650px !important; 
     min-width: 350px; 
     width: auto;
-    
     border: 2px solid rgba(227, 27, 35, 0.4); 
     transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
     object-fit: cover;
@@ -105,7 +118,7 @@
                 0 0 45px var(--accent-glow);
 }
 
-/* --- TAGS META E PILL --- */
+/* --- Badges e Etiquetas (Tags) --- */
 .tags-meta {
     font-size: 0.8em !important; 
     margin: 15px 0 !important;
@@ -125,10 +138,9 @@
 }
 
 /* ==========================================================================
-   3. SEÇÕES ESPECÍFICAS (CAPA, TIMELINE, FORMAÇÃO, CONTATO)
+   5. SEÇÕES DE CONTEÚDO (CAPA, TIMELINE, FORMAÇÃO)
    ========================================================================== */
-
-/* --- Capa --- */
+/* --- Capa / Landing --- */
 .capa-container {
     display: flex;
     flex-direction: column;
@@ -161,11 +173,11 @@
     margin-bottom: 25px;
 }
 
-/* --- Timeline Vertical --- */
+/* --- Linha do Tempo Vertical --- */
 .timeline-box {
     border-left: 2px solid rgba(255, 255, 255, 0.05);
     padding-left: 45px;
-    margin-left: 50px;
+    margin: 20px 0 20px 50px;
     text-align: left;
     position: relative;
 }
@@ -177,27 +189,76 @@
     top: 0;
     height: 100%;
     width: 2px;
-    background: linear-gradient(to bottom, var(--accent-color) 0%, rgba(227, 27, 35, 0.2) 100%);
+    background: linear-gradient(to bottom, 
+                var(--accent-color) 0%, 
+                rgba(227, 27, 35, 0.4) 50%, 
+                transparent 100%);
 }
 
 .timeline-entry {
-    margin-bottom: 50px;
+    margin-bottom: 35px;
     position: relative;
-    padding: 15px 25px;
-    background: rgba(255, 255, 255, 0.02);
+    padding: 20px 30px;
+    background: var(--glass-bg); 
+    backdrop-filter: blur(10px);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid transparent; 
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .timeline-entry:hover {
     transform: translateX(15px);
-    background: rgba(227, 27, 35, 0.05);
-    border-color: rgba(227, 27, 35, 0.5);
-    box-shadow: -10px 10px 30px rgba(227, 27, 35, 0.1);
+    background: rgba(227, 27, 35, 0.07);
+    border-color: rgba(227, 27, 35, 0.4);
+    border-left-color: var(--accent-color); 
+    box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5);
 }
 
-/* --- Grid de Formação (ATUALIZADO COM EFEITOS) --- */
+.timeline-entry h4 {
+    margin: 0 0 8px 0 !important;
+    font-size: 0.8em !important;
+    color: #fff !important;
+    font-weight: 700 !important;
+}
+
+.timeline-subtitle, 
+.timeline-subtitle-off {
+    margin: 0 !important;
+    font-size: 0.60em !important;
+    font-weight: 600;
+}
+
+.timeline-subtitle { color: var(--accent-color); } 
+.timeline-subtitle-off { color: var(--text-dim); }
+
+.timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: -54px; 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 12px;
+    height: 12px;
+    background: var(--bg-dark);
+    border: 2px solid var(--accent-color);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-entry:hover::before {
+    background: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow);
+    transform: translateY(-50%) scale(1.3);
+}
+
+.timeline-entry.active {
+    border-left-color: var(--accent-color);
+    background: rgba(227, 27, 35, 0.04);
+}
+
+/* --- Grid Acadêmica / Formação --- */
 .formation-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -243,7 +304,9 @@
     margin-top: 5px;
 }
 
-/* --- Seção de Contato --- */
+/* ==========================================================================
+   6. CONTATO E CALL TO ACTION (CTA)
+   ========================================================================== */
 .contact-wrapper {
     display: flex;
     flex-direction: column;
@@ -281,9 +344,7 @@
     gap: 25px;
 }
 
-.contact-info-card i, 
-.contact-info-card svg, 
-.contact-info-card img {
+.contact-info-card i, .contact-info-card svg, .contact-info-card img {
     width: 30px;
     text-align: center;
     font-size: 1.3em;
@@ -292,6 +353,7 @@
     padding-right: 20px;
 }
 
+/* --- Área de QR Code --- */
 .qr-section {
     background: var(--glass-bg);
     padding: 30px;
@@ -305,8 +367,8 @@
 }
 
 /* ==========================================================================
-   4. RESPONSIVIDADE
-   ========================================================================= */
+   7. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
+   ========================================================================== */
 @media (max-width: 768px) {
     .split-container, .contact-content, .formation-grid { 
         flex-direction: column !important; 
