@@ -42,4 +42,3 @@ window.addEventListener('resize', () => {
     
     Reveal.layout();
 });
-
