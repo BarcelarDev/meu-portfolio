@@ -1,84 +1,32 @@
+/* ==========================================================================
+   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS
+   ========================================================================== */
 :root {
     --r-main-font: 'Open Sans', sans-serif;
     --r-heading-font: 'Poppins', sans-serif;
-    --accent-color: #38b2ac; /* Verde Água */
+    --accent-color: #38b2ac; /* Verde Água Principal */
     --bg-dark: #0f172a;
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 .reveal {
-    background: #0f172a;
+    background: var(--bg-dark);
     background-image: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+    background-attachment: fixed;
     font-family: var(--r-main-font);
 }
 
-/* Setas e Progresso em Branco */
-.reveal .controls { 
-    color: #ffffff !important; 
+.accent { 
+    color: var(--accent-color) !important; 
 }
 
-.reveal .progress { 
-    color: #ffffff !important; 
-    height: 4px; 
-}
+/* Setas e Progresso */
+.reveal .controls { color: #ffffff !important; }
+.reveal .progress { height: 4px; color: #ffffff !important; }
+.reveal .progress span { background: #ffffff !important; }
 
-.reveal .progress span { 
-    background: #ffffff !important; 
-}
-
-/* Estilo da Capa */
-.capa-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.capa-container .local-data {
-    letter-spacing: 4px;
-    font-size: 0.50em;
-    opacity: 0.6;
-    text-transform: uppercase;
-    margin-bottom: 25px;
-    font-weight: 400;
-}
-
-.capa-container h1 {
-    font-size: 3.8em !important;
-    font-weight: 700 !important;
-    margin: 0 !important;
-    letter-spacing: -1px;
-    white-space: nowrap;
-}
-
-.capa-container .nome-destaque { 
-    color: var(--accent-color); 
-    margin-right: 12px; 
-}
-
-.capa-container .sobrenome { 
-    color: #ffffff; 
-    opacity: 0.95; 
-}
-
-.capa-container h3 {
-    font-size: 1.05em !important;
-    color: #cbd5e1 !important;
-    font-weight: 400 !important;
-    margin-top: 15px !important;
-    margin-bottom: 1em !important;
-    opacity: 0.8;
-}
-
-.capa-container .divisor {
-    width: 40px;
-    height: 2px;
-    background: var(--accent-color);
-    margin: 0 auto 30px;
-}
-
+/* Tipografia Geral */
 .reveal h2 {
     font-size: 1.8em !important;
     text-transform: none !important;
@@ -86,25 +34,13 @@
     margin-bottom: 40px !important;
 }
 
-.accent { 
-    color: var(--accent-color) !important; 
-}
-
-/* Layouts de Cartões */
+/* ==========================================================================
+   2. COMPONENTES DE LAYOUT (CARDS E CONTAINERS)
+   ========================================================================== */
 .grid-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
-}
-
-.feature-card {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-left: 4px solid var(--accent-color);
-    padding: 22px 20px !important; 
-    border-radius: 8px;
-    text-align: left;
 }
 
 .split-container { 
@@ -121,22 +57,211 @@
     border: 1px solid var(--glass-border);
 }
 
-/* Contacto Centralizado Estilo Moderno */
+.tag-pill {
+    background: rgba(56, 178, 172, 0.1);
+    border: 1px solid var(--accent-color);
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.40em;
+    font-weight: 600;
+    color: #fff;
+    margin-right: 5px;
+}
+
+/* ==========================================================================
+   3. SEÇÕES ESPECÍFICAS
+   ========================================================================== */
+
+/* --- Capa --- */
+.capa-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.capa-container h1 {
+    font-size: 3.8em !important;
+    font-weight: 700 !important;
+    margin: 0 !important;
+    white-space: nowrap;
+}
+
+.capa-container .nome-destaque { color: var(--accent-color); margin-right: 12px; }
+
+.capa-container .local-data {
+    letter-spacing: 4px;
+    font-size: 0.50em;
+    opacity: 0.6;
+    text-transform: uppercase;
+    margin-bottom: 25px;
+}
+
+/* --- Timeline Vertical (Trajetória Profissional) --- */
+.timeline-box {
+    border-left: 2px solid rgba(255, 255, 255, 0.05);
+    padding-left: 45px;
+    margin-left: 50px;
+    text-align: left;
+    position: relative;
+}
+
+.timeline-box::after {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, 
+        var(--accent-color) 0%, 
+        rgba(56, 178, 172, 0.5) 50%, 
+        transparent 100%);
+}
+
+.timeline-entry {
+    margin-bottom: 50px;
+    position: relative;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.timeline-entry:hover {
+    transform: translateX(15px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(56, 178, 172, 0.3);
+    box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-entry::before {
+    content: '';
+    position: absolute;
+    left: -54px;
+    top: 22px;
+    width: 12px;
+    height: 12px;
+    background: var(--bg-dark);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.3s ease;
+}
+
+.timeline-entry.active {
+    background: rgba(56, 178, 172, 0.08);
+    border-color: var(--accent-color);
+}
+
+.timeline-entry.active::before {
+    background: var(--accent-color);
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color), 0 0 30px rgba(56, 178, 172, 0.4);
+    transform: scale(1.3);
+}
+
+.timeline-entry h4 {
+    font-size: 1.1em !important;
+    margin: 0 !important;
+    color: #ffffff;
+    font-weight: 700 !important;
+    letter-spacing: -0.5px;
+}
+
+.timeline-entry .empresa {
+    color: var(--accent-color);
+    font-weight: 600;
+    font-size: 0.85em;
+    display: block;
+    margin-top: 4px;
+}
+
+.timeline-entry .periodo {
+    font-size: 0.7em;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: block;
+    margin-top: 8px;
+}
+
+.badge-atual {
+    background: var(--accent-color);
+    color: var(--bg-dark);
+    font-size: 0.5em;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 800;
+    margin-left: 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+}
+
+/* --- Grid de Formação & Especialização (2x2) --- */
+.formation-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.formation-card {
+    background: rgba(255, 255, 255, 0.02);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-left: 4px solid var(--accent-color);
+    padding: 25px !important;
+    border-radius: 12px;
+    text-align: left;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.formation-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(56, 178, 172, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.formation-card h4 {
+    font-size: 0.9em !important;
+    color: var(--accent-color);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px !important;
+    font-weight: 800 !important;
+}
+
+.formation-card .instituicao {
+    font-size: 1.1em;
+    color: #ffffff;
+    font-weight: 600;
+    display: block;
+}
+
+.formation-card .detalhes {
+    font-size: 0.75em;
+    color: #94a3b8;
+    margin-top: 8px;
+    display: block;
+    line-height: 1.4;
+}
+
+/* --- Contato --- */
 .contact-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     width: 100%;
 }
 
 .contact-content {
     display: flex;
-    align-items: stretch;
-    justify-content: center;
     gap: 30px;
-    width: fit-content;
-    margin: 0 auto;
 }
 
 .contact-info-card {
@@ -151,162 +276,61 @@
     justify-content: center;
 }
 
-.contact-info-card p {
-    margin: 15px 0 !important;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    font-size: 0.75em;
-}
-
 .qr-section {
     background: var(--glass-bg);
     padding: 30px;
     border-radius: 12px;
     border: 1px solid var(--glass-border);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
 }
 
 .qr-code-box {
     background: #fff;
     padding: 12px;
     border-radius: 10px;
-    display: inline-block;
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
 
-.qr-code-box img {
-    width: 160px;
-    height: 160px;
-    display: block;
-}
-
-.tag-pill {
-    background: rgba(56, 178, 172, 0.1);
-    border: 1px solid var(--accent-color);
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 0.40em;
-    font-weight: 600;
-    color: #fff;
-    margin-right: 5px;
-}
-
-/* Timeline da Trajetória */
-.timeline-box {
-    border-left: 2px solid var(--accent-color);
-    padding-left: 40px;
-    margin-left: 50px;
-    text-align: left;
-}
-
-.timeline-entry {
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.timeline-entry::before {
-    content: '';
-    position: absolute;
-    left: -48px;
-    top: 5px;
-    width: 14px;
-    height: 14px;
-    background: var(--bg-dark);
-    border: 2px solid var(--accent-color);
-    border-radius: 50%;
-}
-
-.timeline-entry.active::before {
-    background: var(--accent-color);
-    box-shadow: 0 0 10px var(--accent-color);
-}
-
-/* Media Queries */
+/* ==========================================================================
+   4. RESPONSIVIDADE (MOBILE FIRST)
+   ========================================================================== */
 @media (max-width: 768px) {
-    .split-container, 
-    .contact-content { 
-        flex-direction: column; 
-    }
-
-    .grid-container { 
-        grid-template-columns: 1fr; 
-    }
-    
-    .capa-container h1 { 
-        font-size: 1.2em !important; 
-    }
-    
-    .contact-info-card { 
-        min-width: auto; 
-        width: 100%; 
-    }
-}
-
-@media (max-width: 768px) {
-    /* Força a visibilidade do viewport */
     html, body, .reveal, .reveal-viewport {
         overflow-y: auto !important;
         overflow-x: hidden !important;
         height: auto !important;
         min-height: 100vh !important;
-        touch-action: pan-y pinch-zoom;          /* ← ADIÇÃO: permite rolagem vertical com 1 dedo */
+        touch-action: pan-y pinch-zoom;
     }
 
-    /* Reseta o container de slides para se comportar como uma div comum */
     .reveal .slides {
         display: block !important;
         position: relative !important;
         width: 100% !important;
         height: auto !important;
-        inset: 0 !important;
         transform: none !important;
-        zoom: 1 !important; /* Remove o zoom automático do Reveal */
-        text-align: left !important;
-        margin: 0 !important;
-        touch-action: pan-y;                     /* ← ADIÇÃO: scroll vertical prioritário */
-        -webkit-overflow-scrolling: touch;       /* ← ADIÇÃO: rolagem suave no iOS */
+        zoom: 1 !important;
     }
 
-    /* Força cada seção a aparecer uma abaixo da outra */
     .reveal .slides section {
         display: block !important;
         position: relative !important;
-        top: 0 !important;
-        visibility: visible !important;
-        opacity: 1 !important;
         height: auto !important;
-        min-height: 400px; /* Garante que não fiquem colados */
         padding: 60px 20px !important;
-        box-sizing: border-box !important;
-        pointer-events: auto !important;
-        transform: none !important;
-        margin-bottom: 20px;                     /* ← ADIÇÃO: mais espaço entre slides no mobile */
+        margin-bottom: 20px;
     }
 
-    /* Ajuste de fontes para não sumirem */
-    .capa-container h1 { 
-        font-size: 1.2em !important; 
-        white-space: normal !important; 
+    .split-container, .contact-content, .formation-grid { 
+        flex-direction: column; 
     }
-    .reveal h2 { 
-        font-size: 1em !important; 
+
+    .formation-grid {
+        grid-template-columns: 1fr;
     }
+
+    .grid-container { grid-template-columns: 1fr; }
     
-    /* Esconde as setas que travam a tela no mobile */
-    .reveal .controls, 
-    .reveal .progress {
-        display: none !important;
-    }
+    .capa-container h1 { font-size: 1.2em !important; white-space: normal !important; }
+    
+    .reveal .controls, .reveal .progress { display: none !important; }
 
-    /* Evita que elementos interativos interfiram na rolagem */
-    .reveal section * {
-        touch-action: manipulation;              /* ← ADIÇÃO: melhora resposta em botões/links sem bloquear scroll */
-    }
-}
-.reveal {
-    background-attachment: fixed; /* Mantém o gradiente parado enquanto o conteúdo rola por cima */
+    .contact-info-card { min-width: auto; width: 100%; }
 }
