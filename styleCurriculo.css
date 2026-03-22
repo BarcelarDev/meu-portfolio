@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES GERAIS (RED & BLACK EDITION)
+   1. RESET E CONFIGURAÇÕES GERAIS (RED & BLACK EDITION)
    ========================================================================== */
 :root {
     --r-main-font: 'Open Sans', sans-serif;
@@ -13,7 +13,7 @@
     --text-dim: #94a3b8;
 }
 
-* {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -21,16 +21,19 @@
 
 body {
     background: var(--bg-dark);
-    /* Gradiente ajustado para o topo para melhor foco visual */
     background-image: radial-gradient(circle at top center, #1a0505 0%, #050505 80%);
     background-attachment: fixed;
     font-family: var(--r-main-font);
     color: var(--text-main);
     line-height: 1.6;
     scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
 }
 
 .container {
+    width: 100%;
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
@@ -38,31 +41,34 @@ body {
 
 .accent {
     color: var(--accent-color) !important;
-    text-shadow: 0 0 15px var(--accent-glow);
 }
 
 /* ==========================================================================
    2. HEADER / CAPA
    ========================================================================== */
 header {
-    height: 60vh;
+    min-height: 85vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 40px 20px;
 }
 
 h1 {
     font-family: var(--r-heading-font);
-    font-size: clamp(2rem, 8vw, 4rem);
-    font-weight: 800;
+    font-size: clamp(2.8rem, 10vw, 6rem); 
+    font-weight: 900;
     text-transform: uppercase;
-    margin-bottom: 10px;
+    line-height: 1; 
+    margin-bottom: 20px;
+    letter-spacing: -2px;
+    word-wrap: break-word;
 }
 
 .subtitle {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 4vw, 2.2rem);
     letter-spacing: 4px;
     color: var(--text-dim);
     text-transform: uppercase;
@@ -70,18 +76,18 @@ h1 {
 }
 
 .divisor {
-    height: 3px;
-    width: 80px;
+    height: 4px;
+    width: 120px;
     background: var(--accent-color);
     margin: 20px auto;
-    box-shadow: 0 0 15px var(--accent-color);
 }
 
 /* ==========================================================================
-   3. SEÇÕES E CARDS (GLASSMORPHISM)
+   3. SEÇÕES E CARDS
    ========================================================================== */
 section {
-    padding: 80px 0;
+    padding: 30px 0;
+    width: 100%;
 }
 
 h2 {
@@ -90,7 +96,7 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 2px;
     font-weight: 800;
-    margin-bottom: 50px;
+    margin-bottom: 25px;
     display: flex;
     align-items: center;
     gap: 15px;
@@ -113,59 +119,28 @@ h2::after {
     transition: all 0.4s ease;
 }
 
-/* Ajuste de legibilidade para parágrafos dentro de cards */
-.glass-card p {
-    color: #e2e8f0;
-    font-size: 1.05rem;
-    letter-spacing: 0.3px;
-}
-
 .glass-card:hover {
     border-color: var(--accent-color);
     background: rgba(227, 27, 35, 0.05);
     transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(227, 27, 35, 0.1);
 }
 
-/* Experiência Timeline Style */
-.exp-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    margin-bottom: 15px;
-    flex-wrap: wrap;
+/* ==========================================================================
+   4. GRID E LISTAS
+   ========================================================================== */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
 }
 
-.exp-company {
-    font-weight: 700;
-    font-size: 1.2rem;
-    color: #fff;
-}
-
-.exp-date {
-    color: var(--accent-color);
-    font-weight: 600;
-    font-size: 0.9rem;
-}
-
-.exp-role {
-    display: block;
-    color: var(--text-dim);
-    margin-bottom: 15px;
-    font-style: italic;
-}
-
-ul {
-    list-style: none;
-}
-
+ul { list-style: none; }
 ul li {
     margin-bottom: 12px;
     padding-left: 20px;
     position: relative;
     font-size: 0.95rem;
 }
-
 ul li::before {
     content: "•";
     color: var(--accent-color);
@@ -175,34 +150,14 @@ ul li::before {
 }
 
 /* ==========================================================================
-   4. SKILLS & FORMAÇÃO
-   ========================================================================== */
-.grid-2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-}
-
-.tag-pill {
-    background: rgba(227, 27, 35, 0.1);
-    border: 1px solid var(--accent-color);
-    padding: 5px 12px;
-    border-radius: 4px;
-    font-size: 0.7em;
-    font-weight: 700;
-    text-transform: uppercase;
-    margin: 0 5px 10px 0;
-    display: inline-block;
-}
-
-/* ==========================================================================
-   5. CONTATO (CORREÇÃO DEFINITIVA COM GRID)
+   5. CONTATO E QR CODE (CORREÇÃO DE ALTURA APLICADA)
    ========================================================================== */
 .contact-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
-    align-items: stretch;
+    width: 100%;
+    align-items: stretch; /* Força a mesma altura para os filhos */
 }
 
 .contact-info, .qr-section {
@@ -213,22 +168,12 @@ ul li::before {
     padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    transition: all 0.4s ease;
-    height: 100%; 
-    box-sizing: border-box;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
 }
 
 .qr-section {
     align-items: center;
     text-align: center;
-}
-
-.contact-info:hover, .qr-section:hover {
-    border-color: var(--accent-color);
-    background: rgba(227, 27, 35, 0.05);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(227, 27, 35, 0.1);
 }
 
 .contact-item {
@@ -245,20 +190,12 @@ ul li::before {
     margin-bottom: 0;
 }
 
-.contact-item i {
-    color: var(--accent-color);
-    filter: drop-shadow(0 0 5px var(--accent-glow));
-    width: 24px;
-    text-align: center;
-}
-
 .qr-box {
     background: #fff;
     padding: 12px;
     border-radius: 10px;
     display: inline-block;
     margin-bottom: 15px;
-    line-height: 0;
 }
 
 .qr-box img {
@@ -267,33 +204,19 @@ ul li::before {
     height: 140px;
 }
 
-.qr-section span {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    color: var(--text-dim);
-    font-weight: 600;
-}
-
 /* ==========================================================================
    6. MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 850px) {
-    header {
-        height: auto;
-        padding: 100px 20px;
-    }
-
-    h1 {
-        font-size: 2.5rem;
-    }
-
     .contact-content {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
+    h1 { font-size: 2.5rem; }
+    
     .contact-info, .qr-section {
-        padding: 30px;
+        padding: 25px;
     }
 }

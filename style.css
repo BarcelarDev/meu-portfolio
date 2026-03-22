@@ -9,7 +9,7 @@
     /* Identidade Visual: Red & Black */
     --accent-color: #a00000;         /* Vermelho Vibrante */
     --accent-glow: rgba(227, 27, 35, 0.4); /* Brilho para efeitos neon */
-    --bg-dark: #050505;              /* Fundo escuro profundo */
+    --bg-dark: #050505;               /* Fundo escuro profundo */
     
     /* Efeito de Vidro (Glassmorphism) */
     --glass-bg: rgba(255, 255, 255, 0.03);
@@ -138,7 +138,7 @@
 }
 
 /* ==========================================================================
-   5. SEÇÕES DE CONTEÚDO (CAPA, TIMELINE, FORMAÇÃO) - UPGRADED
+   5. SEÇÕES DE CONTEÚDO (CAPA, TIMELINE, FORMAÇÃO)
    ========================================================================== */
 /* --- Capa / Landing --- */
 .capa-container {
@@ -173,7 +173,7 @@
     margin-bottom: 25px;
 }
 
-/* --- Linha do Tempo Vertical (Refinada) --- */
+/* --- Linha do Tempo Vertical --- */
 .timeline-box {
     border-left: 2px solid rgba(255, 255, 255, 0.05);
     padding-left: 45px;
@@ -234,7 +234,6 @@
 .timeline-subtitle { color: var(--accent-color); } 
 .timeline-subtitle-off { color: var(--text-dim); }
 
-/* Ponto da Timeline com Efeito de Respiro */
 .timeline-entry::before {
     content: '';
     position: absolute;
@@ -318,7 +317,7 @@
 }
 
 /* ==========================================================================
-   6. CONTATO E CALL TO ACTION (CTA)
+   6. CONTATO E CALL TO ACTION (CTA) - ESPAÇAMENTO CURTO ENTRE ÍCONE E LINK
    ========================================================================== */
 .contact-wrapper {
     display: flex;
@@ -349,21 +348,48 @@
     transition: all 0.3s ease;
 }
 
-.contact-info-card p {
-    margin: 20px 0 !important;
-    font-size: 0.9em;
+/* Estilo dos links: Gap zerado para controle total via margin-right do ícone */
+.contact-info-card a {
+    text-decoration: none;
+    color: inherit;
     display: flex;
     align-items: center;
-    gap: 25px;
+    gap: 0;                     /* Alterado de 12px para 0 para usar margin lateral */
+    margin: 10px 0 !important; 
+    font-size: 0.9em;
+    transition: all 0.3s ease;
 }
 
-.contact-info-card i, .contact-info-card svg, .contact-info-card img {
-    width: 30px;
+/* Efeito Hover suave */
+.contact-info-card a:hover {
+    color: var(--accent-color);
+    transform: translateX(8px);
+}
+
+/* Ícones: Espaço lateral de 10px aplicado aqui */
+.contact-info-card i, 
+.contact-info-card svg, 
+.contact-info-card img {
+    width: 25px;            
     text-align: center;
-    font-size: 1.3em;
+    font-size: 1.25em;
     flex-shrink: 0; 
-    margin-right: 10px; 
-    padding-right: 20px;
+    color: var(--accent-color) !important;
+    filter: none !important;
+    text-shadow: none !important;
+    padding-right: 0 !important; 
+    
+    /* ESPAÇO LATERAL DE 10px SOLICITADO */
+    margin-right: 40px !important; 
+    
+    transition: all 0.3s ease;
+}
+
+
+/* Glow sutil apenas no hover */
+.contact-info-card a:hover i,
+.contact-info-card a:hover svg {
+    text-shadow: 0 0 10px var(--accent-glow) !important;
 }
 
 /* --- Área de QR Code --- */
@@ -379,13 +405,65 @@
     transition: all 0.3s ease;
 }
 
+.qr-section:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 20px rgba(160, 0, 0, 0.2);
+}
+
 /* ==========================================================================
-   7. REGRAS DE RESPONSIVIDADE (MEDIA QUERIES)
+   7. INCREMENTO DE RESPONSIVIDADE (CÓDIGO ORIGINAL PRESERVADO)
    ========================================================================== */
+@media (max-width: 1024px) {
+    .reveal h1 { font-size: 3em !important; }
+    .split-container { gap: 30px; }
+    .img-profile { min-width: 280px; max-height: 500px !important; }
+}
+
 @media (max-width: 768px) {
-    .split-container, .contact-content, .formation-grid { 
+    .reveal h1 { font-size: 2.2em !important; white-space: normal !important; }
+    .reveal h2 { font-size: 1.4em !important; margin-bottom: 20px !important; }
+    .capa-container .local-data { font-size: 0.4em; letter-spacing: 2px; }
+    
+    .split-container, 
+    .contact-content, 
+    .formation-grid, 
+    .grid-container { 
+        display: flex !important;
         flex-direction: column !important; 
-        align-items: center;
+        align-items: center !important;
+        gap: 20px !important;
     }
-    .contact-info-card { min-width: unset; width: 100%; }
+
+    .split-container > div:not(.img-profile) { text-align: center; }
+    .bio-text { font-size: 0.6em !important; text-align: center !important; }
+    .img-profile { min-width: 200px; max-height: 350px !important; margin-bottom: 20px; }
+
+    .timeline-box { 
+        margin: 10px 0 10px 20px; 
+        padding-left: 25px; 
+    }
+    .timeline-entry { padding: 15px; margin-bottom: 20px; }
+    .timeline-entry:hover { transform: translateX(5px); }
+    .timeline-entry::before { left: -33px; width: 10px; height: 10px; }
+
+    .formation-card { width: 90%; margin: 0 auto; }
+    .contact-info-card { 
+        min-width: unset !important; 
+        width: 100% !important; 
+        padding: 20px !important; 
+    }
+    
+    .contact-info-card a { 
+        font-size: 0.75em; 
+        gap: 10px; 
+        justify-content: flex-start; 
+    }
+
+    .divisor { width: 60px; margin: 15px auto; }
+}
+
+@media (max-height: 500px) {
+    .reveal h1 { font-size: 1.8em !important; }
+    .img-profile { display: none; } 
+    .timeline-entry { padding: 10px; }
 }
