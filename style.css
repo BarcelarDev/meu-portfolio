@@ -4,7 +4,7 @@
 :root {
     --r-main-font: 'Open Sans', sans-serif;
     --r-heading-font: 'Poppins', sans-serif;
-    --accent-color: #e31b23; /* Vermelho Vibrante */
+    --accent-color: #a00000; /* Vermelho Vibrante */
     --accent-glow: rgba(227, 27, 35, 0.4);
     --bg-dark: #050505;
     --glass-bg: rgba(255, 255, 255, 0.03);
@@ -254,6 +254,7 @@
     font-size: 1.3em;
     flex-shrink: 0; /* IMPEDE O ÍCONE DE AMASSAR */
     margin-right: 10px; /* SEGURANÇA EXTRA */
+    padding-right: 20px;
 }
 
 .qr-section {
