@@ -1,7 +1,3 @@
-Para colocar no seu README.md do GitHub (ou de outro repositório), o ideal é que ele seja visual, direto e profissional, já que ele funciona como a "vitrine" do seu código.
-
-Como você está criando uma apresentação executiva, o README deve refletir essa organização. Use o modelo abaixo:
-
 🚀 Executive Presentation - André Barcelar
 Apresentação executiva e portfólio interativo desenvolvido com Reveal.js, focado em demonstrar trajetória profissional, competências em Análise de Dados e Gestão de Vendas.
 
