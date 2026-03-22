@@ -68,11 +68,12 @@
     max-width: 600px;
 }
 
+/* --- ATUALIZADO: BIO TEXT --- */
 .bio-text {
-    font-size: 0.85em !important;
+    font-size: 0.5em !important; 
     line-height: 1.6 !important;
     color: var(--text-main);
-    opacity: 0.9;                  
+    opacity: 1; 
     text-align: left;
 }
 
@@ -104,15 +105,23 @@
                 0 0 45px var(--accent-glow);
 }
 
+/* --- ATUALIZADO: TAGS META E PILL --- */
+.tags-meta {
+    font-size: 0.8em !important; 
+    margin: 15px 0 !important;
+    display: block;
+}
+
 .tag-pill {
     background: rgba(227, 27, 35, 0.1);
     border: 1px solid var(--accent-color);
-    padding: 4px 10px;
+    padding: 6px 12px;
     border-radius: 4px;
-    font-size: 0.40em;
+    font-size: 0.55em !important; 
     font-weight: 600;
     color: #fff;
     margin-right: 5px;
+    display: inline-block;
 }
 
 /* ==========================================================================
@@ -207,7 +216,7 @@
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* --- Seção de Contato (AJUSTADA) --- */
+/* --- Seção de Contato --- */
 .contact-wrapper {
     display: flex;
     flex-direction: column;
@@ -242,18 +251,17 @@
     font-size: 0.9em;
     display: flex;
     align-items: center;
-    gap: 25px; /* ESPAÇO ENTRE ÍCONE E TEXTO */
+    gap: 25px;
 }
 
-/* Alvo para Ícones (FontAwesome, SVG ou Imagem) */
 .contact-info-card i, 
 .contact-info-card svg, 
 .contact-info-card img {
     width: 30px;
     text-align: center;
     font-size: 1.3em;
-    flex-shrink: 0; /* IMPEDE O ÍCONE DE AMASSAR */
-    margin-right: 10px; /* SEGURANÇA EXTRA */
+    flex-shrink: 0; 
+    margin-right: 10px; 
     padding-right: 20px;
 }
 
