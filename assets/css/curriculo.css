@@ -1,5 +1,5 @@
 /* ==========================================================================
-   1. RESET E CONFIGURAÇÕES GERAIS (RED & BLACK EDITION)
+    1. RESET E CONFIGURAÇÕES GERAIS (RED & BLACK EDITION)
    ========================================================================== */
 :root {
     --r-main-font: 'Open Sans', sans-serif;
@@ -44,7 +44,7 @@ body {
 }
 
 /* ==========================================================================
-   2. HEADER / CAPA
+    2. HEADER / CAPA
    ========================================================================== */
 header {
     min-height: 85vh; 
@@ -83,7 +83,7 @@ h1 {
 }
 
 /* ==========================================================================
-   3. SEÇÕES E CARDS GERAIS
+    3. SEÇÕES E CARDS GERAIS (FUSÃO DE ESPAÇAMENTO)
    ========================================================================== */
 section {
     padding: 30px 0;
@@ -114,10 +114,10 @@ h2::after {
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
-    padding: 30px;
+    padding: 35px; /* Ajustado para melhor respiro visual */
     margin-bottom: 30px;
     transition: all 0.4s ease;
-    line-height: 10pix;
+    /* O line-height problemático foi removido para garantir legibilidade */
 }
 
 .glass-card:hover {
@@ -127,46 +127,78 @@ h2::after {
 }
 
 /* ==========================================================================
-   4. GRID E LISTAS
+    4. ORGANIZAÇÃO DE EXPERIÊNCIA E CARGOS (MELHORADO)
    ========================================================================== */
-.grid-2 {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
+
+/* Nome da Empresa e Período */
+.exp-company {
+    font-family: var(--r-heading-font);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-main);
+    margin-bottom: 8px;
+    display: block;
 }
 
+/* Título do Cargo - Com detalhe visual lateral */
 .exp-role {
-  line-height: 1.8;       /* Ajusta o espaço entre as linhas */
-  display: inline-block; /* Necessário se quiser aplicar margens verticais em <span> */
-  margin-bottom: 10px;   /* Espaço abaixo do texto */
-  color: #ffffff;           /* Cor do texto */
-  font-weight: bold;     /* Deixar em negrito */
+    display: block;
+    font-size: 1.25rem;
+    color: var(--text-main);
+    font-weight: 800;
+    margin-bottom: 20px;
+    border-left: 3px solid var(--accent-color);
+    padding-left: 15px;
+    line-height: 1.2;
 }
 
-ul { list-style: none; }
+/* Divisor para múltiplos cargos na mesma empresa */
+.exp-role-separator {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--glass-border);
+}
+
+/* Listas de Atividades */
+ul { 
+    list-style: none; 
+    margin-bottom: 25px;
+}
+
 ul li {
-    margin-bottom: 12px;
-    padding-left: 20px;
+    margin-bottom: 14px;
+    padding-left: 25px;
     position: relative;
     font-size: 0.95rem;
+    color: var(--text-dim);
+    line-height: 1.6;
 }
+
 ul li::before {
     content: "•";
     color: var(--accent-color);
     position: absolute;
     left: 0;
     font-weight: bold;
+    font-size: 1.2rem;
+    top: -2px;
+}
+
+/* Destaque para resultados e métricas */
+ul li strong {
+    color: var(--text-main);
+    font-weight: 600;
 }
 
 /* ==========================================================================
-   5. CONTATO E QR CODE (ALTURA SINCRONIZADA)
+    5. CONTATO E QR CODE (ALTURA SINCRONIZADA)
    ========================================================================== */
 .contact-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
     width: 100%;
-    /* Alinha os itens para terem a mesma altura */
     align-items: stretch;
 }
 
@@ -179,11 +211,10 @@ ul li::before {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 100%; /* Força o card a preencher o espaço total do grid */
+    height: 100%;
     transition: all 0.4s ease;
 }
 
-/* Efeito Hover unificado com o restante do site */
 .contact-info:hover, .qr-section:hover {
     border-color: var(--accent-color);
     background: rgba(227, 27, 35, 0.05);
@@ -232,7 +263,7 @@ ul li::before {
 }
 
 /* ==========================================================================
-   6. MEDIA QUERIES
+    6. MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 850px) {
     .contact-content {
@@ -245,6 +276,6 @@ ul li::before {
     
     .contact-info, .qr-section {
         padding: 25px;
-        height: auto; /* Em mobile, a altura volta a ser automática */
+        height: auto;
     }
 }
