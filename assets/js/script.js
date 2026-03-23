@@ -43,7 +43,7 @@ Reveal.initialize(getSettings());
 window.addEventListener('resize', () => {
     // Se no meio do uso o usuário diminuir a tela drasticamente
     if (isMobile()) {
-        window.location.href = "mobile.html";
+        window.location.href = "../../pages/mobile.html";
     }
     Reveal.configure(getSettings());
     Reveal.layout();
