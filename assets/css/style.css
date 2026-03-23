@@ -1,27 +1,26 @@
 /* ==========================================================================
-   1. VARIÁVEIS E CONFIGURAÇÕES DE CORES (DESIGN SYSTEM)
+   1. DESIGN SYSTEM & VARIÁVEIS
    ========================================================================== */
 :root {
-    /* Tipografia */
     --r-main-font: 'Open Sans', sans-serif;
     --r-heading-font: 'Poppins', sans-serif;
     
-    /* Identidade Visual: Red & Black */
-    --accent-color: #a00000;         /* Vermelho Vibrante */
-    --accent-glow: rgba(227, 27, 35, 0.4); /* Brilho para efeitos neon */
-    --bg-dark: #050505;               /* Fundo escuro profundo */
+    /* Identidade: Red & Black */
+    --accent-color: #a00000;
+    --accent-glow: rgba(227, 27, 35, 0.4);
+    --bg-dark: #050505;
     
-    /* Efeito de Vidro (Glassmorphism) */
+    /* Efeitos de Vidro */
     --glass-bg: rgba(255, 255, 255, 0.03);
     --glass-border: rgba(255, 255, 255, 0.1);
     
     /* Cores de Texto */
     --text-main: #ffffff;
-    --text-dim: #94a3b8;             /* Texto secundário/suave */
+    --text-dim: #94a3b8;
 }
 
 /* ==========================================================================
-   2. ESTILOS GERAIS DO REVEAL.JS (BODY & TEXTO)
+   2. CONFIGURAÇÕES GERAIS (REVEAL.JS)
    ========================================================================== */
 .reveal {
     background: var(--bg-dark);
@@ -31,27 +30,7 @@
     color: var(--text-main);
 }
 
-/* --- Destaques de Cor --- */
-.accent { 
-    color: var(--accent-color) !important; 
-    text-shadow: none !important; /* Isso remove o brilho e deixa a cor sólida */
-}
-
-/* REMOVE O EFEITO VERMELHO E NEON (Use esta classe no "34 Anos") */
-.no-accent {
-    color: var(--text-main) !important;
-    text-shadow: none !important;
-}
-
-/* --- Navegação: Setas e Progresso --- */
-.reveal .controls { color: var(--accent-color) !important; }
-.reveal .progress { height: 4px; background: rgba(255,255,255,0.1) !important; }
-.reveal .progress span { background: var(--accent-color) !important; }
-
-/* --- Tipografia Global --- */
-.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 {
-    color: var(--text-main);
-}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5 { color: var(--text-main); }
 
 .reveal h2 {
     font-size: 1.8em !important;
@@ -61,14 +40,18 @@
     margin-bottom: 40px !important;
 }
 
+/* --- Destaques e Navegação --- */
+.accent { color: var(--accent-color) !important; text-shadow: none !important; }
+.no-accent { color: var(--text-main) !important; text-shadow: none !important; }
+
+.reveal .controls { color: var(--accent-color) !important; }
+.reveal .progress { height: 4px; background: rgba(255,255,255,0.1) !important; }
+.reveal .progress span { background: var(--accent-color) !important; }
+
 /* ==========================================================================
-   3. COMPONENTES DE LAYOUT (GRIDS E CONTAINERS)
+   3. ESTRUTURA DE LAYOUT (CONTAINERS)
    ========================================================================== */
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-}
+.grid-container { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
 
 .split-container { 
     display: flex; 
@@ -79,74 +62,11 @@
     width: 100%;
 }
 
-.split-container > div:not(.img-profile) {
-    flex: 1;
-    text-align: left;
-    max-width: 600px;
-}
+.split-container > div:not(.img-profile) { flex: 1; text-align: left; max-width: 600px; }
 
 /* ==========================================================================
-   4. ELEMENTOS DE PERFIL (BIO E IMAGEM)
+   4. SEÇÃO: CAPA / LANDING
    ========================================================================== */
-/* --- Texto Biográfico --- */
-.bio-text {
-    font-size: 0.5em !important; 
-    line-height: 1.6 !important;
-    color: var(--text-main);
-    opacity: 1; 
-    text-align: left;
-}
-
-.bio-text strong, 
-.bio-text .accent-text {
-    font-size: 1.1em;              
-    letter-spacing: 1px;
-    color: #fff;
-}
-
-/* --- Moldura da Foto de Perfil --- */
-.img-profile {
-    border-radius: 12px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 
-                0 0 30px var(--accent-glow); 
-    max-height: 650px !important; 
-    min-width: 350px; 
-    width: auto;
-    border: 2px solid rgba(227, 27, 35, 0.4); 
-    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-    object-fit: cover;
-}
-
-.img-profile:hover {
-    transform: scale(1.03);
-    border-color: var(--accent-color);
-    box-shadow: 0 25px 50px rgba(0,0,0,0.9), 
-                0 0 45px var(--accent-glow);
-}
-
-/* --- Badges e Etiquetas (Tags) --- */
-.tags-meta {
-    font-size: 0.8em !important; 
-    margin: 15px 0 !important;
-    display: block;
-}
-
-.tag-pill {
-    background: rgba(227, 27, 35, 0.1);
-    border: 1px solid var(--accent-color);
-    padding: 6px 12px;
-    border-radius: 4px;
-    font-size: 0.55em !important; 
-    font-weight: 600;
-    color: #fff;
-    margin-right: 5px;
-    display: inline-block;
-}
-
-/* ==========================================================================
-   5. SEÇÕES DE CONTEÚDO (CAPA, TIMELINE, FORMAÇÃO)
-   ========================================================================== */
-/* --- Capa / Landing --- */
 .capa-container {
     display: flex;
     flex-direction: column;
@@ -179,95 +99,168 @@
     margin-bottom: 25px;
 }
 
-/* --- Linha do Tempo Vertical --- */
+/* ==========================================================================
+   5. SEÇÃO: BIO E PERFIL
+   ========================================================================== */
+.bio-text {
+    font-size: 0.5em !important; 
+    line-height: 1.6 !important;
+    color: var(--text-main);
+    text-align: left;
+}
+
+.bio-text strong, .bio-text .accent-text {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.img-profile {
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.8), 0 0 30px var(--accent-glow); 
+    max-height: 650px !important; 
+    min-width: 350px; 
+    width: auto;
+    border: 2px solid rgba(227, 27, 35, 0.4); 
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover;
+}
+
+.img-profile:hover {
+    transform: scale(1.03);
+    border-color: var(--accent-color);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.9), 0 0 45px var(--accent-glow);
+}
+
+/* Tags */
+.tags-meta { font-size: 0.8em !important; margin: 15px 0 !important; display: block; }
+
+.tag-pill {
+    background: rgba(227, 27, 35, 0.1);
+    border: 1px solid var(--accent-color);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.55em !important; 
+    font-weight: 600;
+    color: #fff;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+/* ==========================================================================
+   6. SEÇÃO: TRAJETÓRIA (FOCO EM CRESCIMENTO/PROMOÇÃO)
+   ========================================================================== */
 .timeline-box {
     border-left: 2px solid rgba(255, 255, 255, 0.05);
     padding-left: 10px;
     margin: 20px 0 20px 50px;
-    text-align: left;
     position: relative;
-}
-
-.timeline-box::after {
-    content: '';
-    position: absolute;
-    left: -2px;
-    top: 0;
-    height: 100%;
-    width: 2px;
-    background: linear-gradient(to bottom, 
-                transparent 0%, 
-                var(--accent-color) 15%, 
-                var(--accent-color) 85%, 
-                transparent 100%);
-    box-shadow: 0 0 8px var(--accent-glow);
+    text-align: left;
 }
 
 .timeline-entry {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
     position: relative;
-    padding: 20px 30px;
+    padding: 25px 35px;
     background: var(--glass-bg); 
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     border-radius: 12px;
     border: 1px solid var(--glass-border);
     border-left: 4px solid transparent; 
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.timeline-entry:hover {
-    transform: translateX(15px);
-    background: rgba(227, 27, 35, 0.07);
-    border-color: rgba(227, 27, 35, 0.4);
-    border-left-color: var(--accent-color); 
-    box-shadow: -10px 10px 30px rgba(0, 0, 0, 0.5);
+/* --- DESTAQUE DA EMPRESA (CABEÇALHO DO GRUPO) --- */
+.timeline-subtitle { 
+    color: var(--accent-color); 
+    font-size: 0.75em !important; 
+    font-weight: 800; 
+    display: block;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 15px !important;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(227, 27, 35, 0.2);
+    width: fit-content;
+} 
+
+/* --- ESTRUTURA DE CARGO E DATA (HEADER) --- */
+.timeline-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 12px; /* Espaço entre cargos na mesma empresa */
 }
 
-.timeline-entry h4 {
-    margin: 0 0 8px 0 !important;
-    font-size: 0.8em !important;
+.timeline-entry h4 { 
+    margin: 0 !important; 
+    font-size: 0.85em !important; 
+    font-weight: 700 !important; 
     color: #fff !important;
-    font-weight: 700 !important;
 }
 
-.timeline-subtitle, 
-.timeline-subtitle-off {
-    margin: 0 !important;
-    font-size: 0.60em !important;
+/* "Atualmente" e Datas na Direita em Cinza */
+.timeline-date-side { 
+    color: var(--text-dim) !important; 
+    font-size: 0.55em !important; 
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
 }
 
-.timeline-subtitle { color: var(--accent-color); } 
-.timeline-subtitle-off { color: var(--text-dim); }
+/* Subtítulo Cinza (Empresas anteriores) */
+.timeline-subtitle-off { 
+    color: var(--text-dim) !important; 
+    font-size: 0.65em !important; 
+    font-weight: 500;
+    margin-top: 8px !important;
+    display: block;
+}
 
+/* --- INDICADORES LATERAIS E EFEITO DE PULSO --- */
 .timeline-entry::before {
     content: '';
     position: absolute;
-    left: -55px; 
-    top: 50%;
-    transform: translateY(-50%);
-    width: 14px;
-    height: 14px;
+    left: -55px; top: 35px; 
+    width: 12px; height: 12px;
     background: var(--bg-dark);
-    border: 2px solid var(--accent-color);
+    border: 2px solid #444;
     border-radius: 50%;
     z-index: 5;
-    transition: all 0.4s ease;
-    box-shadow: 0 0 0 4px var(--bg-dark); 
+    box-shadow: 0 0 0 4px var(--bg-dark);
+    transition: all 0.3s ease;
 }
 
-.timeline-entry:hover::before {
-    background: var(--accent-color);
-    box-shadow: 0 0 0 4px var(--bg-dark), 
-                0 0 15px var(--accent-color);
-    transform: translateY(-50%) scale(1.2);
-}
-
+/* Bolinha Vermelha para o Cargo Ativo */
 .timeline-entry.active::before {
+    border-color: var(--accent-color);
     background: var(--accent-color);
-    box-shadow: 0 0 0 4px var(--bg-dark), 
-                0 0 20px var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-glow), 0 0 0 4px var(--bg-dark);
     animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(160, 0, 0, 0.7), 0 0 0 4px var(--bg-dark); }
+    70% { box-shadow: 0 0 0 10px rgba(160, 0, 0, 0), 0 0 0 4px var(--bg-dark); }
+    100% { box-shadow: 0 0 0 0 rgba(160, 0, 0, 0), 0 0 0 4px var(--bg-dark); }
+}
+
+/* Hover no Card */
+.timeline-entry:hover {
+    transform: translateX(10px);
+    background: rgba(227, 27, 35, 0.05);
+    border-left-color: var(--accent-color); 
+}
+
+.timeline-entry:not(.active):hover::before {
+    border-color: var(--accent-color);
+    background: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-glow), 0 0 0 4px var(--bg-dark);
 }
 
 @keyframes pulse-red {
@@ -276,13 +269,10 @@
     100% { box-shadow: 0 0 0 0 rgba(160, 0, 0, 0); }
 }
 
-/* --- Grid Acadêmica / Formação --- */
-.formation-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-    margin-top: 30px;
-}
+/* ==========================================================================
+   7. SEÇÃO: FORMAÇÃO ACADÊMICA
+   ========================================================================== */
+.formation-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; margin-top: 30px; }
 
 .formation-card {
     background: rgba(255, 255, 255, 0.02);
@@ -302,51 +292,21 @@
     box-shadow: 0 10px 30px rgba(227, 27, 35, 0.15);
 }
 
-.formation-card h4 {
-    margin: 0 0 10px 0 !important;
-    font-size: 0.9em !important;
-    color: var(--accent-color) !important;
-}
-
-.formation-card .instituicao {
-    display: block;
-    font-weight: 700;
-    font-size: 0.7em;
-    color: #fff;
-}
-
-.formation-card .detalhes {
-    display: block;
-    font-size: 0.55em;
-    color: var(--text-dim);
-    margin-top: 5px;
-}
+.formation-card h4 { margin: 0 0 10px 0 !important; font-size: 0.9em !important; color: var(--accent-color) !important; }
+.formation-card .instituicao { display: block; font-weight: 700; font-size: 0.7em; color: #fff; }
+.formation-card .detalhes { display: block; font-size: 0.55em; color: var(--text-dim); margin-top: 5px; }
 
 /* ==========================================================================
-   6. CONTATO E CALL TO ACTION (CTA) - ESPAÇAMENTO CURTO ENTRE ÍCONE E LINK
+   8. SEÇÃO: CONTATO E QR CODE
    ========================================================================== */
-.contact-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-}
-
-.contact-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: stretch; 
-    gap: 30px;
-    margin-top: 20px;
-}
+.contact-wrapper { display: flex; flex-direction: column; align-items: center; width: 100%; }
+.contact-content { display: flex; flex-direction: row; justify-content: center; align-items: stretch; gap: 30px; margin-top: 20px; }
 
 .contact-info-card {
     background: var(--glass-bg);
     padding: 40px;
     border-radius: 12px;
     border: 1px solid var(--glass-border);
-    text-align: left;
     min-width: 450px;
     display: flex;
     flex-direction: column;
@@ -354,51 +314,28 @@
     transition: all 0.3s ease;
 }
 
-/* Estilo dos links: Gap zerado para controle total via margin-right do ícone */
 .contact-info-card a {
     text-decoration: none;
     color: inherit;
     display: flex;
     align-items: center;
-    gap: 0;                     /* Alterado de 12px para 0 para usar margin lateral */
+    gap: 0;
     margin: 10px 0 !important; 
     font-size: 0.9em;
     transition: all 0.3s ease;
 }
 
-/* Efeito Hover suave */
-.contact-info-card a:hover {
-    color: var(--accent-color);
-    transform: translateX(8px);
-}
+.contact-info-card a:hover { color: var(--accent-color); transform: translateX(8px); }
 
-/* Ícones: Espaço lateral de 10px aplicado aqui */
-.contact-info-card i, 
-.contact-info-card svg, 
-.contact-info-card img {
-    width: 25px;            
+.contact-info-card i, .contact-info-card svg, .contact-info-card img {
+    width: 25px; 
     text-align: center;
-    font-size: 1.25em;
     flex-shrink: 0; 
     color: var(--accent-color) !important;
-    filter: none !important;
-    text-shadow: none !important;
-    padding-right: 0 !important; 
-    
-    /* ESPAÇO LATERAL DE 10px SOLICITADO */
     margin-right: 40px !important; 
-    
     transition: all 0.3s ease;
 }
 
-
-/* Glow sutil apenas no hover */
-.contact-info-card a:hover i,
-.contact-info-card a:hover svg {
-    text-shadow: 0 0 10px var(--accent-glow) !important;
-}
-
-/* --- Área de QR Code --- */
 .qr-section {
     background: var(--glass-bg);
     padding: 30px;
@@ -411,94 +348,55 @@
     transition: all 0.3s ease;
 }
 
-.qr-section:hover {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 20px rgba(160, 0, 0, 0.2);
-}
+.qr-section:hover { border-color: var(--accent-color); box-shadow: 0 0 20px rgba(160, 0, 0, 0.2); }
 
 /* ==========================================================================
-   7. INCREMENTO DE RESPONSIVIDADE (UNIDO E CORRIGIDO)
+   9. RESPONSIVIDADE (TABLET & MOBILE)
    ========================================================================== */
 @media (max-width: 1024px) {
     .reveal h1 { font-size: 3em !important; }
-    .split-container { gap: 30px; }
     .img-profile { min-width: 280px; max-height: 500px !important; }
 }
 
 @media screen and (max-width: 768px) {
-    
-    /* --- ESTRUTURA VERTICAL SOLICITADA (Slide abaixo do outro) --- */
-    .reveal .slides {
+    /* Stack Vertical para Mobile */
+    .reveal .slides, .reveal .slides section {
         display: block !important;
         width: 100% !important;
         height: auto !important;
+        position: relative !important;
         inset: 0 !important;
         transform: none !important;
-    }
-
-    .reveal .slides section {
-        display: block !important;
-        position: relative !important;
         opacity: 1 !important;
         visibility: visible !important;
-        width: 100% !important;
-        height: auto !important;
-        min-height: 60vh; 
-        padding: 50px 20px !important; 
-        top: 0 !important;
-        box-sizing: border-box !important; /* Essencial para o iPhone 390px */
+        box-sizing: border-box !important;
     }
 
-    .reveal.embedded { overflow-y: auto !important; }
+    .reveal .slides section { padding: 50px 20px !important; min-height: 60vh; }
 
-    /* --- DETALHES ORIGINAIS DO MOBILE PRESERVADOS --- */
+    /* Ajustes Finos Mobile */
     .reveal h1 { font-size: 2.2em !important; white-space: normal !important; }
-    .reveal h2 { font-size: 1.4em !important; margin-bottom: 20px !important; }
-    .capa-container .local-data { font-size: 0.4em; letter-spacing: 2px; }
+    .reveal h2 { font-size: 1.4em !important; }
+    .capa-container .local-data { font-size: 0.4em; }
     
-    .split-container, 
-    .contact-content, 
-    .formation-grid, 
-    .grid-container { 
-        display: flex !important;
+    .split-container, .contact-content, .formation-grid, .grid-container { 
         flex-direction: column !important; 
-        align-items: center !important;
-        gap: 20px !important;
+        align-items: center !important; 
+        gap: 20px !important; 
     }
 
-    .split-container > div:not(.img-profile) { text-align: center; }
     .bio-text { font-size: 0.6em !important; text-align: center !important; }
     .img-profile { min-width: 200px; max-height: 350px !important; margin-bottom: 20px; }
-
-    .timeline-box { 
-        margin: 10px 0 10px 20px; 
-        padding-left: 25px; 
-    }
-    .timeline-entry { padding: 15px; margin-bottom: 20px; }
-    .timeline-entry:hover { transform: translateX(5px); }
-    .timeline-entry::before { left: -33px; width: 10px; height: 10px; }
-
-    .formation-card { width: 90%; margin: 0 auto; }
-    .contact-info-card { 
-        min-width: unset !important; 
-        width: 100% !important; 
-        padding: 20px !important; 
-    }
     
-    .contact-info-card a { 
-        font-size: 0.75em; 
-        gap: 10px; 
-        justify-content: flex-start; 
-    }
+    .timeline-box { margin-left: 20px; padding-left: 25px; }
+    .timeline-entry::before { left: -33px; }
     
-    /* Ajuste fino para o ícone no mobile (390px) */
-    .contact-info-card i { margin-right: 15px !important; } 
-
-    .divisor { width: 60px; margin: 15px auto; }
+    .contact-info-card { min-width: unset !important; width: 100% !important; padding: 20px !important; }
+    .contact-info-card i { margin-right: 15px !important; }
+    .divisor { width: 60px; }
 }
 
 @media (max-height: 500px) {
     .reveal h1 { font-size: 1.8em !important; }
     .img-profile { display: none; } 
-    .timeline-entry { padding: 10px; }
 }
