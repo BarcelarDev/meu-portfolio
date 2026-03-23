@@ -99,6 +99,27 @@
     margin-bottom: 25px;
 }
 
+.capa-container h3 { 
+    color: var(--text-dim) !important; 
+    font-size: 0.95em !important; /* Tamanho reduzido para equilibrar com o nome principal */
+    font-weight: 600 !important; /* Remove o negrito padrão do h3 */
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Aumenta o espaço entre letras para um visual moderno */
+    opacity: 0.7; 
+    margin: 10px 0 !important; /* Ajusta o espaço acima e abaixo do texto */
+}
+
+.capa-container p, 
+.capa-container .subtitulo-capa { 
+    color: var(--text-dim) !important; 
+    font-size: 0.55em !important; /* Reduzi para ficar proporcional às datas da imagem */
+    font-weight: 350;
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Aumentei o espaçamento para um ar mais premium */
+    opacity: 0.7; /* Opacidade levemente menor para o cinza "sumir" um pouco no fundo */
+    margin-top: 5px;
+}
+
 /* ==========================================================================
    5. SEÇÃO: BIO E PERFIL
    ========================================================================== */
@@ -195,8 +216,8 @@
 
 .timeline-entry h4 { 
     margin: 0 !important; 
-    font-size: 0.85em !important; 
-    font-weight: 700 !important; 
+    font-size: 0.550em !important; 
+    font-weight: 500 !important; /* Alterado de 700 para 400 */
     color: #fff !important;
 }
 
