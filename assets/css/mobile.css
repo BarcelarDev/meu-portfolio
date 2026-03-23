@@ -152,8 +152,10 @@ body {
     animation: bounce 2s infinite;
     opacity: 0.7;
 }
+
+
 /* ==========================================================================
-    4. TRAJETÓRIA PROFISSIONAL (VERSÃO LIMPA)
+    4. TRAJETÓRIA PROFISSIONAL 
    ========================================================================== */
 
 .timeline-box {
@@ -238,6 +240,28 @@ h2.accent {
     border-radius: 0 !important; 
     border: 1px solid var(--glass-border);
     box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+
+/* Linha divisora personalizada */
+.divider-line {
+    height: 1px;
+    width: 100%; /* Ou uma largura menor, ex: 80%, para destacar o efeito */
+    
+    /* Gradiente: Transparente -> Cor Sólida -> Transparente */
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        var(--accent-color) 50%, 
+        transparent 100%
+    );
+    
+    border: none;
+    
+    /* Garante o espaçamento vertical e centraliza horizontalmente */
+    margin: 40px auto; 
+    
+    /* Opcional: Garante que a linha se comporte como um bloco */
+    display: block;
 }
 
 .bio-text {
