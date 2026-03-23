@@ -1,50 +1,74 @@
-🚀 Executive Presentation - André Barcelar
-Apresentação executiva e portfólio interativo desenvolvido com Reveal.js, focado em demonstrar trajetória profissional, competências em Análise de Dados e Gestão de Vendas.
+🚀 Portfolio — André Barcelar
 
-Este projeto possui um sistema híbrido de visualização:
+Uma apresentação executiva de alto impacto e portfólio interativo desenvolvido com Reveal.js. 
 
-Desktop: Experiência cinematográfica com navegação por slides laterais.
+O projeto foi desenhado para demonstrar trajetórias profissionais de forma cinematográfica, unindo o poder da 
+análise de dados à estética moderna do Glassmorphism.
 
-Mobile: Layout otimizado estilo Landing Page com rolagem vertical para máxima legibilidade.
+Diferencial: Sistema híbrido de visualização com detecção inteligente de hardware.
+Desktop: Navegação horizontal imersiva estilo keynote.
+Mobile: Transição automática para layout Landing Page vertical, priorizando a legibilidade e UX.
 
-🛠️ Tecnologias Utilizadas
-HTML5/CSS3: Estrutura e estilização avançada com Glassmorphism.
 
-JavaScript: Lógica de detecção de dispositivo e controle de viewport.
 
-Reveal.js: Framework base para apresentações baseadas em web.
+🛠️ Stack Tecnológica
 
-FontAwesome: Ícones vetoriais.
+Engine de Apresentação: Reveal.js
+Frontend: HTML5, CSS3 (Custom Properties & Flexbox/Grid)
+Design Trend: Glassmorphism UI (Efeito de desfoque e transparência)
+Interatividade: JavaScript Vanilla para manipulação de DOM e detecção de Viewport
+Iconografia: FontAwesome
 
-📱 Funcionalidades de Responsividade
-O projeto foi calibrado para evitar os erros comuns de escala em dispositivos móveis:
 
-Auto-Layout Off no Mobile: Impede que o texto fique minúsculo em telas pequenas.
 
-Click-to-Action: Links diretos para WhatsApp, E-mail e LinkedIn integrados nos cards.
+✨ Funcionalidades e Engenharia de UX
 
-Glass Design: Interface moderna com desfoque de fundo e bordas translúcidas.
+O projeto foi calibrado para solucionar problemas comuns de apresentações web em dispositivos móveis:
+Smart Responsiveness: Bloqueio de auto-scaling no mobile para evitar textos ilegíveis.
+Interface Glass-Design: Estética moderna com camadas de desfoque e bordas translúcidas.
+Direct CTA (Click-to-Action): Integração nativa com APIs do WhatsApp, E-mail e LinkedIn.
+Performance: Carregamento otimizado de assets e ícones vetoriais.
 
-📁 Estrutura do Projeto
-Plaintext
-├── index.html          # Estrutura dos slides e conteúdo
-├── style.css           # Estilização e Media Queries (Mobile/PC)
-├── script.js           # Lógica de inicialização e responsividade
-└── src/
-    └── Img/
-        └── Barcelar.png # Foto de perfil
-🚀 Como Visualizar
-Faça o download ou clone este repositório.
 
-Certifique-se de que a estrutura de pastas da imagem (src/Img/) está correta.
+📂 Estrutura do Projeto
+De acordo com o ambiente de desenvolvimento:
 
-Abra o arquivo index.html em qualquer navegador moderno.
+Bash
+.
+├── assets/
+│   ├── css/
+│   │   ├── curriculo.css    # Estilos específicos do CV
+│   │   ├── mobile.css       # Overrides para dispositivos móveis
+│   │   └── style.css        # Estilização global e Glassmorphism
+│   ├── img/
+│   │   ├── Barcelar.jpeg    # Foto de perfil principal
+│   │   └── Casa-Interior.png # Background temático
+│   └── js/
+│       ├── mobile.js        # Lógica de adaptação mobile
+│       └── script.js        # Configurações do Reveal.js
+├── pages/
+│   ├── curriculo.html       # Visualização detalhada de currículo
+│   └── mobile.html          # View específica para telas pequenas
+├── index.html               # Ponto de entrada (Main Presentation)
+└── README.md
 
-Nota: Para a melhor experiência mobile, o projeto utiliza detecção de largura de tela para alternar entre o modo slide e o modo leitura.
 
-👤 Contato
-Localização: Fortaleza, CE
+⚙️ Como Executar
+Clone o repositório:
 
-LinkedIn: linkedin.com/in/barcelar/
+Bash
+git clone https://github.com/BarcelarDev/meu-portfolio.git
+Navegue até a pasta:
 
-WhatsApp: (88) 99784-3454
+Bash
+cd MEU-PORTFOLIO
+Abra o projeto:
+Basta abrir o arquivo index.html em seu navegador de preferência.
+
+
+🤝 Contato & Networking
+André Barcelar | Commercial Manager & Data Analytics Specialist
+
+📍 Localização: Fortaleza, CE
+🔗 LinkedIn: linkedin.com/in/barcelar
+📱 WhatsApp: +55 (88) 99784-3454
