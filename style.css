@@ -34,7 +34,13 @@
 /* --- Destaques de Cor --- */
 .accent { 
     color: var(--accent-color) !important; 
-    text-shadow: 0 0 15px var(--accent-glow);
+    text-shadow: none !important; /* Isso remove o brilho e deixa a cor sólida */
+}
+
+/* REMOVE O EFEITO VERMELHO E NEON (Use esta classe no "34 Anos") */
+.no-accent {
+    color: var(--text-main) !important;
+    text-shadow: none !important;
 }
 
 /* --- Navegação: Setas e Progresso --- */
@@ -176,7 +182,7 @@
 /* --- Linha do Tempo Vertical --- */
 .timeline-box {
     border-left: 2px solid rgba(255, 255, 255, 0.05);
-    padding-left: 45px;
+    padding-left: 10px;
     margin: 20px 0 20px 50px;
     text-align: left;
     position: relative;
