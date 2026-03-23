@@ -63,6 +63,17 @@ body {
     text-align: center;
 }
 
+.vb-center {
+    min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    position: relative;
+    text-align: center;
+}
+
 .glass-card {
     background: var(--glass-bg);
     backdrop-filter: blur(10px);
