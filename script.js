@@ -1,38 +1,50 @@
-// 1. Detecção de dispositivo
+// 1. Redirecionamento Imediato (Se for celular, vai para mobile.html)
+if (window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    window.location.href = "mobile.html";
+}
+
+// 2. Detecção de dispositivo (Para o caso de redimensionamento de janela no PC)
 const isMobile = () => window.innerWidth <= 768;
 
-// 2. Central de Configurações (Unindo suas versões)
+// 3. Central de Configurações (Focada agora no comportamento de PC/Tablet)
 const getSettings = () => {
     const mobile = isMobile();
     
+    // Se o usuário redimensionar a tela do PC para o tamanho de um celular, 
+    // ele pode escolher se quer redirecionar ou apenas adaptar o layout atual.
+    
     return {
-        // Dimensões exatas solicitadas
-        width: mobile ? 390 : 1920,
-        height: mobile ? 844 : 1080,
+        // Dimensões para PC
+        width: 1920,
+        height: 1080,
         
-        // Comportamento Adaptativo
-        margin: mobile ? 0 : 0.1,      // Zero margem no mobile para ocupar a largura toda
-        center: !mobile,               // Não centraliza verticalmente no mobile para não quebrar o scroll
-        disableLayout: mobile,         // ESSENCIAL: Libera o conteúdo para fluir
-        embedded: mobile,              // Comportamento de conteúdo normal
-        touch: !mobile,                // Desativa o swipe do Reveal para liberar o scroll do dedo
-        controls: !mobile,             // Remove setas no mobile
-        progress: !mobile,             // Remove barra no mobile
+        // Comportamento para Desktop
+        margin: 0.1,
+        center: true,
+        disableLayout: false,
+        embedded: false,
+        touch: true,
+        controls: true,
+        progress: true,
         
-        // Configurações Fixas e de Escala
+        // Configurações Fixas
         hash: true,
         minScale: 0.2,
         maxScale: 2.0,
         transition: 'slide',
-        mouseWheel: false              // Evita conflitos de scroll
+        mouseWheel: false
     };
 };
 
-// 3. Inicialização
+// 4. Inicialização do Reveal (Executado apenas se não houver redirecionamento)
 Reveal.initialize(getSettings());
 
-// 4. Update em tempo real (Resize)
+// 5. Update em tempo real (Resize)
 window.addEventListener('resize', () => {
+    // Se no meio do uso o usuário diminuir a tela drasticamente
+    if (isMobile()) {
+        window.location.href = "mobile.html";
+    }
     Reveal.configure(getSettings());
     Reveal.layout();
 });
