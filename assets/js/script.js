@@ -1,6 +1,6 @@
 // 1. Redirecionamento Imediato (Se for celular, vai para mobile.html)
 if (window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    window.location.href = "mobile.html";
+    window.location.href = "../../pages/mobile.html";
 }
 
 // 2. Detecção de dispositivo (Para o caso de redimensionamento de janela no PC)
