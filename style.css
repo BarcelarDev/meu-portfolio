@@ -411,7 +411,7 @@
 }
 
 /* ==========================================================================
-   7. INCREMENTO DE RESPONSIVIDADE (CÓDIGO ORIGINAL PRESERVADO)
+   7. INCREMENTO DE RESPONSIVIDADE (UNIDO E CORRIGIDO)
    ========================================================================== */
 @media (max-width: 1024px) {
     .reveal h1 { font-size: 3em !important; }
@@ -419,7 +419,33 @@
     .img-profile { min-width: 280px; max-height: 500px !important; }
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
+    
+    /* --- ESTRUTURA VERTICAL SOLICITADA (Slide abaixo do outro) --- */
+    .reveal .slides {
+        display: block !important;
+        width: 100% !important;
+        height: auto !important;
+        inset: 0 !important;
+        transform: none !important;
+    }
+
+    .reveal .slides section {
+        display: block !important;
+        position: relative !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        width: 100% !important;
+        height: auto !important;
+        min-height: 60vh; 
+        padding: 50px 20px !important; 
+        top: 0 !important;
+        box-sizing: border-box !important; /* Essencial para o iPhone 390px */
+    }
+
+    .reveal.embedded { overflow-y: auto !important; }
+
+    /* --- DETALHES ORIGINAIS DO MOBILE PRESERVADOS --- */
     .reveal h1 { font-size: 2.2em !important; white-space: normal !important; }
     .reveal h2 { font-size: 1.4em !important; margin-bottom: 20px !important; }
     .capa-container .local-data { font-size: 0.4em; letter-spacing: 2px; }
@@ -458,6 +484,9 @@
         gap: 10px; 
         justify-content: flex-start; 
     }
+    
+    /* Ajuste fino para o ícone no mobile (390px) */
+    .contact-info-card i { margin-right: 15px !important; } 
 
     .divisor { width: 60px; margin: 15px auto; }
 }

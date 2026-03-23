@@ -83,7 +83,7 @@ h1 {
 }
 
 /* ==========================================================================
-   3. SEÇÕES E CARDS
+   3. SEÇÕES E CARDS GERAIS
    ========================================================================== */
 section {
     padding: 30px 0;
@@ -150,14 +150,15 @@ ul li::before {
 }
 
 /* ==========================================================================
-   5. CONTATO E QR CODE (CORREÇÃO DE ALTURA APLICADA)
+   5. CONTATO E QR CODE (ALTURA SINCRONIZADA)
    ========================================================================== */
 .contact-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 30px;
     width: 100%;
-    align-items: stretch; /* Força a mesma altura para os filhos */
+    /* Alinha os itens para terem a mesma altura */
+    align-items: stretch;
 }
 
 .contact-info, .qr-section {
@@ -168,7 +169,16 @@ ul li::before {
     padding: 40px;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center;
+    height: 100%; /* Força o card a preencher o espaço total do grid */
+    transition: all 0.4s ease;
+}
+
+/* Efeito Hover unificado com o restante do site */
+.contact-info:hover, .qr-section:hover {
+    border-color: var(--accent-color);
+    background: rgba(227, 27, 35, 0.05);
+    transform: translateY(-5px);
 }
 
 .qr-section {
@@ -204,6 +214,14 @@ ul li::before {
     height: 140px;
 }
 
+.qr-section span {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-dim);
+}
+
 /* ==========================================================================
    6. MEDIA QUERIES
    ========================================================================== */
@@ -218,5 +236,6 @@ ul li::before {
     
     .contact-info, .qr-section {
         padding: 25px;
+        height: auto; /* Em mobile, a altura volta a ser automática */
     }
 }

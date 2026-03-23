@@ -1,44 +1,38 @@
-// Função para verificar se é mobile
+// 1. Detecção de dispositivo
 const isMobile = () => window.innerWidth <= 768;
 
-// Inicialização do Reveal
-Reveal.initialize({
-    // Configurações para Desktop
-    width: 1200,
-    height: 800,
-    margin: 0.1,
-    minScale: 0.2,
-    maxScale: 2.0,
+// 2. Central de Configurações (Unindo suas versões)
+const getSettings = () => {
+    const mobile = isMobile();
     
-    // Configurações de Comportamento
-    hash: true,
-    center: !isMobile(),           // Não centralizar no mobile (evita bugs de posicionamento)
-    disableLayout: isMobile(),     // Muito importante: desativa o layout fixo do Reveal no mobile
-    embedded: isMobile(),          // Faz o Reveal se comportar como conteúdo normal da página
-    
-    // → Aqui está o ajuste principal para scroll com 1 dedo:
-    touch: !isMobile(),            // Desativa COMPLETAMENTE o touch/swipe do Reveal no mobile
-    
-    controls: !isMobile(),
-    progress: !isMobile(),
-    
-    // Outras opções que você já tinha ou pode querer
-    // transition: 'slide',        // ou o que você estiver usando
-    // ... suas outras configs
-});
+    return {
+        // Dimensões exatas solicitadas
+        width: mobile ? 390 : 1920,
+        height: mobile ? 844 : 1080,
+        
+        // Comportamento Adaptativo
+        margin: mobile ? 0 : 0.1,      // Zero margem no mobile para ocupar a largura toda
+        center: !mobile,               // Não centraliza verticalmente no mobile para não quebrar o scroll
+        disableLayout: mobile,         // ESSENCIAL: Libera o conteúdo para fluir
+        embedded: mobile,              // Comportamento de conteúdo normal
+        touch: !mobile,                // Desativa o swipe do Reveal para liberar o scroll do dedo
+        controls: !mobile,             // Remove setas no mobile
+        progress: !mobile,             // Remove barra no mobile
+        
+        // Configurações Fixas e de Escala
+        hash: true,
+        minScale: 0.2,
+        maxScale: 2.0,
+        transition: 'slide',
+        mouseWheel: false              // Evita conflitos de scroll
+    };
+};
 
-// Correção dinâmica ao redimensionar a janela
+// 3. Inicialização
+Reveal.initialize(getSettings());
+
+// 4. Update em tempo real (Resize)
 window.addEventListener('resize', () => {
-    const currentMobile = isMobile();
-    
-    Reveal.configure({ 
-        disableLayout: currentMobile, 
-        center: !currentMobile,
-        touch: !currentMobile,          // ← Garante que touch fique false no mobile
-        controls: !currentMobile,
-        progress: !currentMobile,
-        embedded: currentMobile
-    });
-    
+    Reveal.configure(getSettings());
     Reveal.layout();
 });
