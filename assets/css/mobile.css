@@ -35,7 +35,6 @@ body {
 .text-center { text-align: center; }
 .j-center { justify-content: center; }
 
-/* AJUSTE: Imagem responsiva sem arredondamento */
 .img-responsive { 
     width: 100%; 
     height: auto; 
@@ -74,7 +73,7 @@ body {
 }
 
 /* ==========================================================================
-   3. SEÇÃO: CAPA (RESPONSIVIDADE MELHORADA)
+   3. SEÇÃO: CAPA
    ========================================================================== */
 #capa .container {
     width: 100%;
@@ -166,7 +165,6 @@ body {
     margin-bottom: 15px;
 }
 
-/* AJUSTE: Borda da imagem de origem reta */
 .img-border {
     border-radius: 0 !important; 
     border: 1px solid var(--glass-border);
@@ -180,7 +178,6 @@ body {
     margin-bottom: 20px;
 }
 
-/* AJUSTE: Foto de perfil reta */
 .img-profile {
     max-width: 150px;
     border-radius: 0 !important; 
@@ -212,25 +209,27 @@ body {
     margin-bottom: 40px;
 }
 
+/* AJUSTADO: Layout de cards um abaixo do outro */
 .formation-grid-mobile {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    grid-template-columns: 1fr; 
+    gap: 20px; 
     width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
 }
 
 .formation-card {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    padding: 20px;
+    padding: 25px;
     border-radius: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     text-align: left;
+    min-height: 120px;
 }
-
-/* ... (demais estilos de card mantidos) */
 
 /* ==========================================================================
    5. CONTATOS E QR CODE
@@ -242,9 +241,7 @@ body {
     align-items: center;
 }
 
-.contact-links p { 
-    margin-bottom: 15px; 
-}
+.contact-links p { margin-bottom: 15px; }
 
 .contact-links a {
     text-decoration: none;
@@ -255,11 +252,10 @@ body {
     gap: 10px;
 }
 
-/* Ajuste para QR Code e Imagens Retangulares */
 .qr-code-box {
     background: white;
     padding: 10px;
-    border-radius: 0 !important; /* Mantém a quina reta */
+    border-radius: 0 !important;
     display: inline-block;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
@@ -267,7 +263,7 @@ body {
 .qr-code-box img { 
     width: 110px; 
     height: 110px; 
-    border-radius: 0 !important; /* Garante que a imagem do QR não arredonde */
+    border-radius: 0 !important; 
 }
 
 .qr-label {
@@ -277,7 +273,7 @@ body {
     letter-spacing: 2px;
     text-transform: uppercase;
     font-weight: bold;
-    color: #000; /* Ajuste se o fundo da label for o card branco */
+    color: #000;
 }
 
 /* ==========================================================================
