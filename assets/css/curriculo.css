@@ -47,7 +47,7 @@ body {
     2. HEADER
    ========================================================================== */
 header {
-    min-height: 85vh; 
+    min-height: 85vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,10 +58,10 @@ header {
 
 h1 {
     font-family: var(--r-heading-font);
-    font-size: clamp(2.8rem, 10vw, 6rem); 
+    font-size: clamp(2.8rem, 10vw, 6rem);
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 1; 
+    line-height: 1;
     margin-bottom: 20px;
     letter-spacing: -2px;
 }
@@ -82,8 +82,8 @@ h1 {
 }
 
 .header-tagline {
-    letter-spacing: 4px; 
-    font-size: 0.7em; 
+    letter-spacing: 4px;
+    font-size: 0.7em;
     opacity: 0.6;
 }
 
@@ -119,7 +119,7 @@ h2::after {
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
-    padding: 35px; 
+    padding: 35px;
     margin-bottom: 30px;
     transition: all 0.4s ease;
 }
@@ -131,18 +131,18 @@ h2::after {
 }
 
 .summary-text {
-    font-size: 1.1rem; 
+    font-size: 1.1rem;
     opacity: 0.9;
 }
 
 /* ==========================================================================
-    4. EXPERIÊNCIA
+    4. EXPERIÊNCIA (CORRIGIDO)
    ========================================================================== */
 .exp-header {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 10px;
+    margin-bottom: 25px; /* Espaço aumentado para não colar no cargo */
 }
 
 .exp-company {
@@ -152,15 +152,15 @@ h2::after {
     letter-spacing: 1px;
     color: var(--text-main);
     display: block;
-}
-
-.exp-date {
-    color: var(--text-dim);
-    font-size: 0.9rem;
+    margin-bottom: 8px; /* Espaço extra abaixo do nome da empresa */
 }
 
 .exp-role {
-    display: block;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     font-size: 1.25rem;
     color: var(--text-main);
     font-weight: 800;
@@ -168,6 +168,12 @@ h2::after {
     border-left: 3px solid var(--accent-color);
     padding-left: 15px;
     line-height: 1.2;
+}
+
+.exp-date {
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--text-dim);
 }
 
 .exp-stack-title {
@@ -180,14 +186,14 @@ h2::after {
 }
 
 .card-hr {
-    opacity: 0.1; 
+    opacity: 0.1;
     margin: 20px 0;
     border: none;
     border-top: 1px solid white;
 }
 
-ul { 
-    list-style: none; 
+ul {
+    list-style: none;
     margin-bottom: 25px;
 }
 
@@ -210,7 +216,7 @@ ul li::before {
 }
 
 /* ==========================================================================
-    5. FORMAÇÃO E STACK (CORRIGIDO)
+    5. FORMAÇÃO E STACK
    ========================================================================== */
 .cards-stack {
     display: flex;
@@ -218,12 +224,6 @@ ul li::before {
     gap: 20px;
 }
 
-/* Classe de estilo para o card de formação que respeita o padrão global */
-.formation-card-style {
-    /* Não definimos borda fixa aqui, ele herda do .glass-card */
-}
-
-/* O efeito vermelho só acontece aqui, no HOVER */
 .formation-card-style:hover {
     border-color: var(--accent-color) !important;
     background: rgba(227, 27, 35, 0.05);
@@ -286,73 +286,36 @@ ul li::before {
     background: rgba(227, 27, 35, 0.05);
 }
 
-/* Container que envolve os links para garantir alinhamento vertical */
-.contact-info-wrapper {
-    display: flex;
-    flex-direction: column; /* Força um link abaixo do outro */
-    gap: 20px; /* Espaçamento entre os links */
-    align-items: flex-start; /* Alinha os links à esquerda */
-}
-
-/* Estilo individual de cada link */
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    text-decoration: none;
-    color: var(--text-main);
-    font-size: 1.1rem;
-    transition: all 0.3s ease; /* Suaviza o efeito de hover */
-    width: fit-content;
-}
-
-/* EFEITO AO PASSAR O MOUSE NO LINK */
-.contact-item:hover {
-    color: var(--accent-color); /* Muda a cor do texto para vermelho */
-    transform: translateX(10px); /* Move o link levemente para a direita */
-}
-
-/* Garante que o ícone também mude ou reaja no hover */
-.contact-item:hover i {
-    transform: scale(1.2);
-    color: var(--text-main); /* Inverte a cor se desejar um destaque */
-}
-
 /* ==========================================================================
-    6. CONTATO - LAYOUT, ALTURA E EFEITOS (FINAL)
+    6. CONTATO - LAYOUT E EFEITOS (CORRIGIDO)
    ========================================================================== */
-
-/* Grid que mantém os dois cards lado a lado com a mesma altura */
 .contact-content {
     display: grid;
-    grid-template-columns: 1.8fr 1fr; 
+    grid-template-columns: 1.8fr 1fr;
     gap: 25px;
-    align-items: stretch; /* Força altura igual em ambos os cards */
+    align-items: stretch;
 }
 
-/* Base dos cards de contato */
 .contact-content .glass-card {
     margin-bottom: 0 !important;
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    justify-content: center;
     height: 100%;
 }
 
-/* Container de Links (Vertical) */
 .contact-info-wrapper {
     display: flex;
-    flex-direction: column; 
-    gap: 20px; 
+    flex-direction: column;
+    gap: 35px !important; /* Espaço vertical entre cada link de contato */
     align-items: flex-start;
-    padding: 10px 0;
+    padding: 15px 0;
 }
 
-/* Estilo individual de cada link e efeito de hover individual */
 .contact-item {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px; /* Espaço entre o ícone e o texto */
     text-decoration: none;
     color: var(--text-main);
     font-size: 1.1rem;
@@ -362,14 +325,13 @@ ul li::before {
 
 .contact-item:hover {
     color: var(--accent-color);
-    transform: translateX(10px); /* O link desliza para a direita */
+    transform: translateX(10px);
 }
 
 .contact-item:hover i {
     transform: scale(1.2);
 }
 
-/* Centralização do QR Code no card da direita */
 .qr-container-intern {
     display: flex;
     flex-direction: column;
@@ -394,34 +356,39 @@ ul li::before {
 }
 
 .qr-tag {
-    font-size: 0.7rem; 
-    letter-spacing: 3px; 
+    font-size: 0.7rem;
+    letter-spacing: 3px;
     font-weight: 600;
     text-transform: uppercase;
     opacity: 0.8;
     color: var(--text-main);
 }
 
-/* Reajuste para Celular */
-@media (max-width: 850px) {
-    .contact-content {
-        grid-template-columns: 1fr; /* Empilha os cards no mobile */
-    }
-}
-
 /* ==========================================================================
-    7. MEDIA QUERIES (ATUALIZADO PARA AMBAS SEÇÕES)
+    7. MEDIA QUERIES
    ========================================================================== */
 @media (max-width: 850px) {
-    .contact-content, .cards-stack {
+    .contact-content,
+    .cards-stack {
         grid-template-columns: 1fr;
     }
-    
-    h1 { font-size: 3rem; }
 
-    .contact-content .glass-card, 
+    h1 {
+        font-size: 3rem;
+    }
+
+    .contact-content .glass-card,
     .cards-stack .glass-card {
         padding: 30px 20px;
+    }
+
+    .exp-role {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contact-info-wrapper {
+        gap: 25px !important;
     }
 }
 
@@ -430,10 +397,10 @@ ul li::before {
    ========================================================================== */
 footer {
     width: 100%;
-    background-color: #0a0a0a; /* Um preto mais profundo para contraste */
+    background-color: #0a0a0a;
     padding: 30px 0;
     margin-top: 60px;
-    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha quase invisível */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -443,26 +410,47 @@ footer {
     width: 90%;
     max-width: 1200px;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.02); /* Glassmorphism sutil */
+    background: rgba(255, 255, 255, 0.02);
     border-radius: 4px;
     text-align: center;
-    
-    /* Tipografia */
     font-family: 'Inter', sans-serif;
-    font-size: 0.75rem; /* Um pouco menor para elegância */
+    font-size: 0.75rem;
     color: #ffffff;
     font-weight: 400;
     text-transform: uppercase;
-    letter-spacing: 3px; /* Espaçamento premium */
-    
+    letter-spacing: 3px;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    opacity: 0.6; /* Estado inicial discreto */
+    opacity: 0.6;
 }
 
-/* Efeito interativo ao passar o mouse */
 .footer-bottom:hover {
     opacity: 1;
     background: rgba(255, 255, 255, 0.05);
-    letter-spacing: 4px; /* O texto "respira" no hover */
-    color: #e31e24; /* Opcional: destaque com sua cor de destaque */
+    letter-spacing: 4px;
+    color: #e31e24;
+}
+
+/* ==========================================================================
+    AJUSTES DE EMERGÊNCIA (COLE NO FIM DO ARQUIVO)
+   ========================================================================== */
+
+/* 1. Espaço entre os itens de CONTATO (Telefone, Email, etc) */
+.contact-item {
+    margin-bottom: 25px !important; /* Empurra o item de baixo para longe */
+    display: flex !important;
+}
+
+.contact-item:last-child {
+    margin-bottom: 0 !important; /* Remove o espaço do último para não sobrar */
+}
+
+/* 2. Espaço entre o NOME DA EMPRESA e o CARGO */
+.exp-company {
+    margin-bottom: 15px !important; /* Cria o espaço abaixo do nome da empresa */
+    display: block !important;     /* Garante que a margem funcione */
+}
+
+/* 3. Espaço extra no Header da Experiência */
+.exp-header {
+    margin-bottom: 20px !important;
 }
