@@ -389,3 +389,65 @@ h2.accent {
     max-width: 560px; 
     margin: 0 auto;
 }
+
+
+/* ==========================================================================
+    8. FOOTER (VERSÃO MINIMALISTA)
+   ========================================================================== */
+footer {
+    width: 100%;
+    padding: 40px 0;
+    margin-top: 60px;
+    position: relative;
+}
+
+/* Linha sutil de topo no padrão do projeto */
+footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Não toca as bordas para ser elegante */
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+}
+
+.footer-bottom {
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.footer-line {
+    height: 3px;
+    width: 30px;
+    background: var(--accent-color);
+    margin: 0 auto 15px;
+    box-shadow: 0 0 10px var(--accent-glow);
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-bottom p {
+    font-family: var(--r-main-font);
+    font-size: 0.7rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Interatividade ao passar o mouse */
+.footer-bottom:hover {
+    border-color: rgba(227, 27, 35, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.footer-bottom:hover .footer-line {
+    width: 60px; /* A linha expande suavemente */
+}
