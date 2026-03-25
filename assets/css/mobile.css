@@ -413,7 +413,12 @@ footer::before {
     background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
 }
 
-
+.footer-bottom {
+    border-radius: 12px;
+    padding: 25px;
+    text-align: center;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
 
 .footer-line {
     height: 3px;
