@@ -1,5 +1,5 @@
 /* ==========================================================================
-    1. RESET E CONFIGURAÇÕES GERAIS (RED & BLACK EDITION)
+    1. RESET E CONFIGURAÇÕES GERAIS
    ========================================================================== */
 :root {
     --r-main-font: 'Open Sans', sans-serif;
@@ -44,7 +44,7 @@ body {
 }
 
 /* ==========================================================================
-    2. HEADER / CAPA
+    2. HEADER
    ========================================================================== */
 header {
     min-height: 85vh; 
@@ -64,7 +64,6 @@ h1 {
     line-height: 1; 
     margin-bottom: 20px;
     letter-spacing: -2px;
-    word-wrap: break-word;
 }
 
 .subtitle {
@@ -82,8 +81,14 @@ h1 {
     margin: 20px auto;
 }
 
+.header-tagline {
+    letter-spacing: 4px; 
+    font-size: 0.7em; 
+    opacity: 0.6;
+}
+
 /* ==========================================================================
-    3. SEÇÕES E CARDS GERAIS (FUSÃO DE ESPAÇAMENTO)
+    3. SEÇÕES E CARDS
    ========================================================================== */
 section {
     padding: 30px 0;
@@ -114,10 +119,9 @@ h2::after {
     backdrop-filter: blur(10px);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
-    padding: 35px; /* Ajustado para melhor respiro visual */
+    padding: 35px; 
     margin-bottom: 30px;
     transition: all 0.4s ease;
-    /* O line-height problemático foi removido para garantir legibilidade */
 }
 
 .glass-card:hover {
@@ -126,22 +130,35 @@ h2::after {
     transform: translateY(-5px);
 }
 
-/* ==========================================================================
-    4. ORGANIZAÇÃO DE EXPERIÊNCIA E CARGOS (MELHORADO)
-   ========================================================================== */
+.summary-text {
+    font-size: 1.1rem; 
+    opacity: 0.9;
+}
 
-/* Nome da Empresa e Período */
+/* ==========================================================================
+    4. EXPERIÊNCIA
+   ========================================================================== */
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+}
+
 .exp-company {
     font-family: var(--r-heading-font);
     font-size: 1.1rem;
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-main);
-    margin-bottom: 8px;
     display: block;
 }
 
-/* Título do Cargo - Com detalhe visual lateral */
+.exp-date {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+}
+
 .exp-role {
     display: block;
     font-size: 1.25rem;
@@ -153,14 +170,22 @@ h2::after {
     line-height: 1.2;
 }
 
-/* Divisor para múltiplos cargos na mesma empresa */
-.exp-role-separator {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--glass-border);
+.exp-stack-title {
+    display: block;
+    font-weight: 700;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    font-size: 0.95rem;
 }
 
-/* Listas de Atividades */
+.card-hr {
+    opacity: 0.1; 
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid white;
+}
+
 ul { 
     list-style: none; 
     margin-bottom: 25px;
@@ -172,7 +197,6 @@ ul li {
     position: relative;
     font-size: 0.95rem;
     color: var(--text-dim);
-    line-height: 1.6;
 }
 
 ul li::before {
@@ -185,97 +209,260 @@ ul li::before {
     top: -2px;
 }
 
-/* Destaque para resultados e métricas */
-ul li strong {
-    color: var(--text-main);
-    font-weight: 600;
-}
-
 /* ==========================================================================
-    5. CONTATO E QR CODE (ALTURA SINCRONIZADA)
+    5. FORMAÇÃO E STACK (CORRIGIDO)
    ========================================================================== */
-.contact-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px;
-    width: 100%;
-    align-items: stretch;
-}
-
-.contact-info, .qr-section {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    border-radius: 12px;
-    padding: 40px;
+.cards-stack {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    transition: all 0.4s ease;
+    gap: 20px;
 }
 
-.contact-info:hover, .qr-section:hover {
-    border-color: var(--accent-color);
+/* Classe de estilo para o card de formação que respeita o padrão global */
+.formation-card-style {
+    /* Não definimos borda fixa aqui, ele herda do .glass-card */
+}
+
+/* O efeito vermelho só acontece aqui, no HOVER */
+.formation-card-style:hover {
+    border-color: var(--accent-color) !important;
     background: rgba(227, 27, 35, 0.05);
-    transform: translateY(-5px);
 }
 
-.qr-section {
-    align-items: center;
-    text-align: center;
+.formation-title {
+    font-family: var(--r-heading-font);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+    color: var(--text-main);
+    text-transform: uppercase;
 }
 
+.formation-item {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.skills-main-title {
+    font-family: var(--r-heading-font);
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+.skill-category {
+    margin-bottom: 25px;
+}
+
+.category-subtitle {
+    font-size: 1rem;
+    margin-bottom: 12px;
+    color: var(--text-main);
+    opacity: 0.9;
+}
+
+.tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag-pill {
+    display: inline-block;
+    padding: 6px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    color: var(--text-dim);
+    transition: all 0.3s ease;
+}
+
+.tag-pill:hover {
+    border-color: var(--accent-color);
+    color: var(--text-main);
+    background: rgba(227, 27, 35, 0.05);
+}
+
+/* Container que envolve os links para garantir alinhamento vertical */
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column; /* Força um link abaixo do outro */
+    gap: 20px; /* Espaçamento entre os links */
+    align-items: flex-start; /* Alinha os links à esquerda */
+}
+
+/* Estilo individual de cada link */
 .contact-item {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-bottom: 25px;
-    font-size: 1.1rem;
-    color: var(--text-main);
     text-decoration: none;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    transition: all 0.3s ease; /* Suaviza o efeito de hover */
+    width: fit-content;
 }
 
-.contact-item:last-child {
-    margin-bottom: 0;
+/* EFEITO AO PASSAR O MOUSE NO LINK */
+.contact-item:hover {
+    color: var(--accent-color); /* Muda a cor do texto para vermelho */
+    transform: translateX(10px); /* Move o link levemente para a direita */
+}
+
+/* Garante que o ícone também mude ou reaja no hover */
+.contact-item:hover i {
+    transform: scale(1.2);
+    color: var(--text-main); /* Inverte a cor se desejar um destaque */
+}
+
+/* ==========================================================================
+    6. CONTATO - LAYOUT, ALTURA E EFEITOS (FINAL)
+   ========================================================================== */
+
+/* Grid que mantém os dois cards lado a lado com a mesma altura */
+.contact-content {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr; 
+    gap: 25px;
+    align-items: stretch; /* Força altura igual em ambos os cards */
+}
+
+/* Base dos cards de contato */
+.contact-content .glass-card {
+    margin-bottom: 0 !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centraliza o conteúdo verticalmente */
+    height: 100%;
+}
+
+/* Container de Links (Vertical) */
+.contact-info-wrapper {
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+    align-items: flex-start;
+    padding: 10px 0;
+}
+
+/* Estilo individual de cada link e efeito de hover individual */
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+.contact-item:hover {
+    color: var(--accent-color);
+    transform: translateX(10px); /* O link desliza para a direita */
+}
+
+.contact-item:hover i {
+    transform: scale(1.2);
+}
+
+/* Centralização do QR Code no card da direita */
+.qr-container-intern {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 .qr-box {
     background: #fff;
     padding: 12px;
     border-radius: 10px;
-    display: inline-block;
     margin-bottom: 15px;
+    line-height: 0;
+    display: inline-block;
 }
 
 .qr-box img {
-    display: block;
     width: 140px;
     height: 140px;
+    display: block;
 }
 
-.qr-section span {
+.qr-tag {
+    font-size: 0.7rem; 
+    letter-spacing: 3px; 
+    font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.8rem;
-    font-weight: 700;
-    color: var(--text-dim);
+    opacity: 0.8;
+    color: var(--text-main);
+}
+
+/* Reajuste para Celular */
+@media (max-width: 850px) {
+    .contact-content {
+        grid-template-columns: 1fr; /* Empilha os cards no mobile */
+    }
 }
 
 /* ==========================================================================
-    6. MEDIA QUERIES
+    7. MEDIA QUERIES (ATUALIZADO PARA AMBAS SEÇÕES)
    ========================================================================== */
 @media (max-width: 850px) {
-    .contact-content {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
+    .contact-content, .cards-stack {
+        grid-template-columns: 1fr;
     }
-
-    h1 { font-size: 2.5rem; }
     
-    .contact-info, .qr-section {
-        padding: 25px;
-        height: auto;
+    h1 { font-size: 3rem; }
+
+    .contact-content .glass-card, 
+    .cards-stack .glass-card {
+        padding: 30px 20px;
     }
+}
+
+/* ==========================================================================
+    8. FOOTER (BARRA DE COPYRIGHT)
+   ========================================================================== */
+footer {
+    width: 100%;
+    background-color: #0a0a0a; /* Um preto mais profundo para contraste */
+    padding: 30px 0;
+    margin-top: 60px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05); /* Linha quase invisível */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-bottom {
+    width: 90%;
+    max-width: 1200px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.02); /* Glassmorphism sutil */
+    border-radius: 4px;
+    text-align: center;
+    
+    /* Tipografia */
+    font-family: 'Inter', sans-serif;
+    font-size: 0.75rem; /* Um pouco menor para elegância */
+    color: #ffffff;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 3px; /* Espaçamento premium */
+    
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    opacity: 0.6; /* Estado inicial discreto */
+}
+
+/* Efeito interativo ao passar o mouse */
+.footer-bottom:hover {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.05);
+    letter-spacing: 4px; /* O texto "respira" no hover */
+    color: #e31e24; /* Opcional: destaque com sua cor de destaque */
 }
